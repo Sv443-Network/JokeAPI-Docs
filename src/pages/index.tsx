@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Layout from "@theme/Layout";
+import { Layout } from "@site/src/components/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import Heading from "@theme/Heading";
 import styles from "./index.module.css";
@@ -33,7 +33,8 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={siteConfig.title}
-      description={siteConfig.tagline}>
+      description={siteConfig.tagline}
+    >
       <HomepageHeader />
       <main>
         <HomepageFeatures />

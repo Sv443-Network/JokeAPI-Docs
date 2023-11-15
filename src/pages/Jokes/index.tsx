@@ -1,5 +1,5 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Layout from "@theme/Layout";
+import { Layout } from "@site/src/components/Layout";
 
 export default function JokesHome() {
   const { siteConfig } = useDocusaurusContext();
