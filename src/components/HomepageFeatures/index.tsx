@@ -3,47 +3,51 @@
 import clsx from "clsx";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.css";
+import { Link } from "../Link";
 
-type FeatureItem = {
+type FeatureProps = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<"svg">>;
   description: JSX.Element;
 };
 
-const FeatureList: FeatureItem[] = [
+const jokesAmt = 420; // TODO: get this from the API
+const languagesAmt = 69; // TODO: get this from the API too
+
+const featureList: FeatureProps[] = [
   {
-    title: "Easy to Use",
-    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
+    title: "Variety",
+    Svg: (await import("@site/static/img/undraw_docusaurus_mountain.svg")).default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        JokeAPI offers a wide variety of jokes to fit everyone's taste.<br/>
+        With {jokesAmt} jokes in {languagesAmt} languages, you're guaranteed to find something you like.
       </>
     ),
   },
   {
-    title: "Focus on What Matters",
-    Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
+    title: "Filtering",
+    Svg: (await import("@site/static/img/undraw_docusaurus_tree.svg")).default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        With JokeAPI, you can filter jokes by category, type, language, and more.<br/>
+        This way you can get the jokes you want, and nothing else.
       </>
     ),
   },
   {
-    title: "Powered by React",
-    Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
+    title: "Community",
+    Svg: (await import("@site/static/img/undraw_docusaurus_react.svg")).default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        With jokes submitted by the community, there will always be new jokes to discover.<br/>
+        You can even <Link href="https://example.org/TODO" target="_self">submit your own jokes</Link> to share with the world!
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({ title, Svg, description }: FeatureProps) {
   return (
     <div className={clsx("col col--4")}>
       <div className="text--center">
@@ -62,7 +66,7 @@ export default function HomepageFeatures(): JSX.Element {
     <section className={styles.features}>
       <div className="container">
         <div className="row">
-          {FeatureList.map((props, idx) => (
+          {featureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
         </div>

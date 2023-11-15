@@ -6,12 +6,12 @@ const organizationName = "Sv443-Network";
 const projectName = "JokeAPI-Docs-Test";
 
 const config: Config = {
-  title: "JokeAPI Documentation",
+  title: "JokeAPI",
   tagline: "Get your funny up bozo",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://docs.jokeapi.dev/",
+  url: "https://v3.jokeapi.dev/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -61,22 +61,41 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "Documentation",
+      title: "JokeAPI",
       logo: {
         alt: "JokeAPI Logo",
-        src: "img/icon_128.png",
+        src: "img/logo_128.png",
       },
       items: [
         {
+          label: "Documentation",
           type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          sidebarId: "documentationSidebar",
           position: "left",
-          label: "Tutorial",
         },
-        {to: "/blog", label: "Blog", position: "left"},
         {
-          href: `https://github.com/${organizationName}/${projectName}`,
+          label: "Pricing",
+          to: "/pricing",
+          position: "left",
+        },
+        {
+          label: "Jokes",
+          to: "/jokes",
+          position: "left",
+        },
+        {
+          label: "Submissions",
+          to: "/submissions",
+          position: "left",
+        },
+        {
+          label: "Blog",
+          to: "/blog",
+          position: "left",
+        },
+        {
           label: "GitHub",
+          href: `https://github.com/${organizationName}/${projectName}`,
           position: "right",
         },
       ],

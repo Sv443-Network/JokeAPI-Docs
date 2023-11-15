@@ -10,6 +10,20 @@
   overflow: hidden;
 }
 
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.logo {
+  --img-size: 80px;
+  width: var(--img-size);
+  height: var(--img-size);
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
