@@ -1,10 +1,12 @@
 import clsx from "clsx";
-import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { Layout } from "@site/src/components/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import Heading from "@theme/Heading";
 import styles from "./index.module.css";
+import { Button } from "@mui/material";
+import { ArrowForward } from "@mui/icons-material";
+import { navigate } from "../utils";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -17,11 +19,14 @@ function HomepageHeader() {
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Get started now ➡
-          </Link>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => navigate("/docs/intro")}
+            endIcon={<ArrowForward />}
+          >
+              Get started now
+          </Button>
         </div>
       </div>
     </header>
@@ -32,7 +37,7 @@ export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={siteConfig.title}
+      title={"Home"}
       description={siteConfig.tagline}
     >
       <HomepageHeader />

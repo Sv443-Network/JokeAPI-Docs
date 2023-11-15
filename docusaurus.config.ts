@@ -107,7 +107,7 @@ const config: Config = {
         },
         {
           label: "GitHub",
-          href: `https://github.com/${organizationName}/${projectName}`,
+          href: "https://github.com/Sv443/JokeAPI",
           position: "right",
         },
       ],
