@@ -6,7 +6,7 @@ const organizationName = "Sv443-Network";
 const projectName = "JokeAPI-Docs-Test";
 
 const config: Config = {
-  title: "JokeAPI Docs",
+  title: "JokeAPI Documentation",
   tagline: "Get your funny up bozo",
   favicon: "img/favicon.ico",
 
@@ -61,7 +61,7 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "JokeAPI Docs",
+      title: "Documentation",
       logo: {
         alt: "JokeAPI Logo",
         src: "img/icon_128.png",
@@ -75,7 +75,7 @@ const config: Config = {
         },
         {to: "/blog", label: "Blog", position: "left"},
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: `https://github.com/${organizationName}/${projectName}`,
           label: "GitHub",
           position: "right",
         },
@@ -97,16 +97,12 @@ const config: Config = {
           title: "Community",
           items: [
             {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
-            },
-            {
               label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
+              href: "https://dc.sv443.net/",
             },
             {
-              label: "Twitter",
-              href: "https://twitter.com/docusaurus",
+              label: "GitHub Discussions",
+              href: "https://github.com/Sv443/JokeAPI/discussions",
             },
           ],
         },
@@ -119,7 +115,7 @@ const config: Config = {
             },
             {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com/Sv443/JokeAPI",
             },
           ],
         },
