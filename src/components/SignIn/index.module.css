@@ -12,17 +12,13 @@
   padding: 15px;
 }
 
-.popoverLoginContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 15px;
-  gap: 5px;
-}
-
 .loggedInBtnContainer {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   margin-right: 10px;
+}
+
+.oauthBtn {
+  justify-content: flex-start !important;
 }

@@ -2,7 +2,7 @@ import { themes } from "@storybook/theming";
 import { useDarkMode } from "storybook-dark-mode";
 import React from "react";
 import type { Preview } from "@storybook/react";
-import { ThemeProvider } from "./ThemeProvider";
+import { StorybookThemeProvider } from "./StorybookThemeProvider";
 
 const preview: Preview = {
   parameters: {
@@ -23,17 +23,17 @@ const preview: Preview = {
   decorators: [
     // MUI theme provider using storybook-dark-mode hook
     (Story) => (
-      <ThemeProvider>
+      <StorybookThemeProvider>
         <React.StrictMode>
           <Story />
         </React.StrictMode>
-      </ThemeProvider>
+      </StorybookThemeProvider>
     ),
     // dark story background
     (Story) => {
       const darkMode = useDarkMode();
 
-      return React.createElement(ThemeProvider, {
+      return React.createElement(StorybookThemeProvider, {
         children: [
           React.createElement("style", {
             dangerouslySetInnerHTML: {

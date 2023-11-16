@@ -1,20 +1,18 @@
 import { Button, ButtonBase, Paper, Popover, Stack, Typography, useTheme } from "@mui/material";
 import { Google, KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
-import { useCallback, useState, MouseEvent } from "react";
+import { useCallback, useState, MouseEvent, ComponentProps } from "react";
 import clsx from "clsx";
 import { useUserStore } from "@site/src/store";
 import { OAuthProvider } from "@site/src/types";
 import { navigate } from "@site/src/utils";
 import styles from "./index.module.css";
 
-interface SignInProps {
-  
-}
+type SignInProps = ComponentProps<typeof ButtonBase>;
 
 // TODO
 const placeholderUrl = "https://picsum.photos/100/100";
 
-export function SignIn(_props: SignInProps) {
+export function SignIn({ ...rest }: SignInProps) {
   const { username, avatarUrl } = useUserStore();
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -35,13 +33,13 @@ export function SignIn(_props: SignInProps) {
 
   return (
     <>
-      <ButtonBase className="signin-buttonbase" onClick={openProfilePopover} color="primary">
+      <ButtonBase className="signin-buttonbase" onClick={openProfilePopover} color="primary" {...rest}>
         <Paper sx={{ backgroundColor: theme.palette.primary.main }}>
           <div style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            height: 44,
+            height: 40,
             ...(username ? {
               paddingLeft: 10,
               paddingRight: 10,
@@ -90,37 +88,61 @@ export function SignIn(_props: SignInProps) {
         <div className={clsx(styles.popoverContainer)}>
           {username ? (
             <Stack direction="column" gap={2}>
-              <Button variant="contained" onClick={() => navigate("/profile?TODO")}>Profile</Button>
-              <Button variant="contained" onClick={() => navigate("/profile/submissions?TODO")}>Submissions</Button>
-              <Button variant="outlined" onClick={() => alert("TODO: sign out & refresh")} sx={{ marginTop: 2 }}>Sign out</Button>
+              <Button
+                color="secondary"
+                variant="contained"
+                onClick={() => navigate("/profile?TODO")}
+              >
+                  Profile
+              </Button>
+              <Button
+                color="secondary"
+                variant="contained"
+                onClick={() => navigate("/profile/submissions?TODO")}
+              >
+                  Submissions
+              </Button>
+              <Button
+                color="secondary"
+                variant="outlined"
+                onClick={() => alert("TODO: sign out & refresh")}
+                sx={{ marginTop: 2 }}
+              >
+                Sign out
+              </Button>
             </Stack>
           ) : (
             <>
-              <Typography variant="h6">Sign in with OAuth:</Typography>
-              <div className={clsx(styles.popoverLoginContainer)}>
+              <Stack direction="column" gap={2}>
                 {/* TODO: SVG images & put in "img/" */}
                 <Button
+                  color="secondary"
                   variant="contained"
                   onClick={() => oauthSignIn("github")}
+                  className={clsx(styles.oauthBtn)}
                   startIcon={<img className={clsx(styles.buttonImg)} src="https://raw.githubusercontent.com/Sv443/BetterYTM/develop/assets/external/github.png" />}
                 >
                 GitHub
                 </Button>
                 <Button
+                  color="secondary"
                   variant="contained"
                   onClick={() => oauthSignIn("discord")}
+                  className={clsx(styles.oauthBtn)}
                   startIcon={<img className={clsx(styles.buttonImg)} src="https://raw.githubusercontent.com/Sv443/BetterYTM/develop/assets/external/discord.png" />}
                 >
                 Discord
                 </Button>
                 <Button
+                  color="secondary"
                   variant="contained"
                   onClick={() => oauthSignIn("google")}
+                  className={clsx(styles.oauthBtn)}
                   startIcon={<Google />}
                 >
                 Google
                 </Button>
-              </div>
+              </Stack>
             </>
           )}
         </div>
