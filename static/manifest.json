@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "version": "3.0.0",
+  "short_name": "JokeAPI Docs",
+  "name": "JokeAPI Offline Documentation",
+  "description": "JokeAPI Offline Documentation",
+  "icons": {
+    "128": "/img/JAPI3_temp_128.png"
+  },
+  "id": "/?source=pwa",
+  "start_url": "/?source=pwa",
+  "background_color": "#2e8555",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#2e8555",
+  "shortcuts": [
+    {
+      "name": "TODO",
+      "short_name": "TODO",
+      "description": "TODO",
+      "url": "/TODO?source=pwa",
+      "icons": [{ "src": "/img/TODO.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/img/TODO.png",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    }
+  ]
+}

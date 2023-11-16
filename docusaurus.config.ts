@@ -68,13 +68,13 @@ const config: Config = {
       title: "JokeAPI",
       logo: {
         alt: "JokeAPI Logo",
-        src: "img/logo_128.png",
+        src: "img/JAPI3_temp_128.png",
       },
       items: [
-        {
-          type: "docsVersionDropdown",
-          position: "left",
-        },
+        // {
+        //   type: "docsVersionDropdown",
+        //   position: "left",
+        // },
         {
           label: "Documentation",
           type: "docSidebar",
@@ -187,6 +187,36 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
+    plugins: [
+      [
+        "@docusaurus/plugin-pwa",
+        {
+          debug: true,
+          offlineModeActivationStrategies: [
+            "appInstalled",
+            "standalone",
+            "queryString",
+          ],
+          pwaHead: [
+            {
+              tagName: "link",
+              rel: "icon",
+              href: "/img/JAPI3_temp_128.png",
+            },
+            {
+              tagName: "link",
+              rel: "manifest",
+              href: "/manifest.json", // your PWA manifest
+            },
+            {
+              tagName: "meta",
+              name: "theme-color",
+              content: "#2e8555",
+            },
+          ],
+        },
+      ],
+    ],
   } satisfies Preset.ThemeConfig,
 };
 

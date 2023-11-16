@@ -1,11 +1,11 @@
+import Heading from "@theme/Heading";
 import clsx from "clsx";
+import { Button } from "@mui/material";
+import { ArrowForward } from "@mui/icons-material";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { Layout } from "@site/src/components/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
-import Heading from "@theme/Heading";
 import styles from "./index.module.css";
-import { Button } from "@mui/material";
-import { ArrowForward } from "@mui/icons-material";
 import { navigate } from "../utils";
 
 function HomepageHeader() {
@@ -18,14 +18,14 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
+        <div>
           <Button
             variant="contained"
             size="large"
             onClick={() => navigate("/docs/intro")}
             endIcon={<ArrowForward />}
           >
-              Get started now
+            Get started now
           </Button>
         </div>
       </div>
