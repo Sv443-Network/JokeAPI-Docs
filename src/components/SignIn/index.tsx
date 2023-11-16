@@ -1,5 +1,5 @@
 import { Button, ButtonBase, Paper, Popover, Stack, Typography, useTheme } from "@mui/material";
-import { Google, KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
+import { AutoFixHigh, Google, KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { useCallback, useState, MouseEvent, ComponentProps } from "react";
 import clsx from "clsx";
 import { useUserStore } from "@site/src/store";
@@ -13,7 +13,7 @@ type SignInProps = ComponentProps<typeof ButtonBase>;
 const placeholderUrl = "https://picsum.photos/100/100";
 
 export function SignIn({ ...rest }: SignInProps) {
-  const { username, avatarUrl } = useUserStore();
+  const { username, avatarUrl, setUser } = useUserStore();
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const theme = useTheme();
@@ -27,25 +27,42 @@ export function SignIn({ ...rest }: SignInProps) {
     setPopoverOpen(false);
   }, [setPopoverOpen]);
 
+  const getOAuthLogo = useCallback((provider: OAuthProvider) => {
+    return (
+      <img src={`/img/external/${provider}.svg`} style={{ width: "1em", height: "1em" }} />
+    )
+  }, [theme.palette.mode]);
+
   const oauthSignIn = useCallback((provider: OAuthProvider) => {
     alert(`TODO: sign in with ${provider}`);
+  }, []);
+
+  const devSignIn = useCallback(() => {
+    setUser({
+      username: "Sv443",
+      avatarUrl: "https://github.com/Sv443.png",
+    });
+    closeProfilePopover();
   }, []);
 
   return (
     <>
       <ButtonBase className="signin-buttonbase" onClick={openProfilePopover} color="primary" {...rest}>
-        <Paper sx={{ backgroundColor: theme.palette.primary.main }}>
+        <div style={{
+          // border: `2px solid ${theme.palette.primary.main}`,
+          borderRadius: 5,
+        }}>
           <div style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             height: 40,
             ...(username ? {
-              paddingLeft: 10,
+              paddingLeft: 4,
               paddingRight: 10,
             } : {
-              paddingLeft: 18,
-              paddingRight: 12,
+              paddingLeft: 14,
+              paddingRight: 10,
             }),
           }}>
             {username ? (
@@ -57,20 +74,24 @@ export function SignIn({ ...rest }: SignInProps) {
                     marginRight: 10,
                     width: 32,
                     height: 32,
-                    backgroundColor: theme.palette.background.paper,
-                    borderRadius: "10%",
+                    // backgroundColor: theme.palette.background.paper,
+                    border: `1px solid ${theme.palette.primary.main}`,
+                    borderRadius: 2,
                   }}
                 />
-                <Typography variant="body1">{username}</Typography>
+                <Typography variant="body1" style={{ fontWeight: 500 }} color={theme.palette.text.secondary}>{username}</Typography>
               </div>
             ) : (
               <>
-                <Typography variant="body1" style={{ marginRight: 5 }}>Sign in</Typography>
+                <Typography variant="body1" style={{ fontWeight: 500, marginRight: 5 }} color={theme.palette.text.secondary}>Sign in</Typography>
               </>
             )}
-            {popoverOpen ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+            {popoverOpen
+              ? <KeyboardArrowUp style={{ color: theme.palette.text.secondary }} />
+              : <KeyboardArrowDown style={{ color: theme.palette.text.secondary }} />
+            }
           </div>
-        </Paper>
+        </div>
       </ButtonBase>
       <Popover
         anchorEl={anchorEl}
@@ -90,17 +111,15 @@ export function SignIn({ ...rest }: SignInProps) {
             <Stack direction="column" gap={2}>
               <Button
                 color="secondary"
-                variant="contained"
                 onClick={() => navigate("/profile?TODO")}
               >
-                  Profile
+                Profile
               </Button>
               <Button
                 color="secondary"
-                variant="contained"
                 onClick={() => navigate("/profile/submissions?TODO")}
               >
-                  Submissions
+                Submissions
               </Button>
               <Button
                 color="secondary"
@@ -114,33 +133,38 @@ export function SignIn({ ...rest }: SignInProps) {
           ) : (
             <>
               <Stack direction="column" gap={2}>
-                {/* TODO: SVG images & put in "img/" */}
                 <Button
                   color="secondary"
-                  variant="contained"
                   onClick={() => oauthSignIn("github")}
                   className={clsx(styles.oauthBtn)}
-                  startIcon={<img className={clsx(styles.buttonImg)} src="https://raw.githubusercontent.com/Sv443/BetterYTM/develop/assets/external/github.png" />}
+                  startIcon={getOAuthLogo("github")}
                 >
                 GitHub
                 </Button>
                 <Button
                   color="secondary"
-                  variant="contained"
                   onClick={() => oauthSignIn("discord")}
                   className={clsx(styles.oauthBtn)}
-                  startIcon={<img className={clsx(styles.buttonImg)} src="https://raw.githubusercontent.com/Sv443/BetterYTM/develop/assets/external/discord.png" />}
+                  startIcon={getOAuthLogo("discord")}
                 >
                 Discord
                 </Button>
                 <Button
                   color="secondary"
-                  variant="contained"
                   onClick={() => oauthSignIn("google")}
                   className={clsx(styles.oauthBtn)}
-                  startIcon={<Google />}
+                  startIcon={getOAuthLogo("google")}
                 >
                 Google
+                </Button>
+                <Button
+                  color="secondary"
+                  variant="outlined"
+                  onClick={devSignIn}
+                  className={clsx(styles.oauthBtn)}
+                  startIcon={<AutoFixHigh />}
+                >
+                Debug
                 </Button>
               </Stack>
             </>

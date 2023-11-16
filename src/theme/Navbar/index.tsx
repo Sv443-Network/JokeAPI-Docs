@@ -21,7 +21,7 @@ export default function NavbarWrapper(props: Record<string, unknown>) {
 
     const signinContainer = document.createElement("div");
     signinContainer.id = "signin-container";
-    signinContainer.style.marginLeft = "16px";
+    signinContainer.style.marginLeft = "10px";
     navbarItemsRight.appendChild(signinContainer);
   
     const root = createRoot(signinContainer);

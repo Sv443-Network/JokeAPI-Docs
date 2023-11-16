@@ -20,7 +20,6 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div>
           <Button
-            variant="contained"
             size="large"
             onClick={() => navigate("/docs/intro")}
             endIcon={<ArrowForward />}

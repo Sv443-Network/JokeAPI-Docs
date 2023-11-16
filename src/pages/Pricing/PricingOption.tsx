@@ -49,7 +49,7 @@ export function PricingOption({
           <li key={`pricingopt-${title}-feat-${i}`}>{feature}</li>
         ))}
       </ul>
-      <Button variant="contained" onClick={() => navigate(button.redirect)}>
+      <Button onClick={() => navigate(button.redirect)}>
         {button.label}
       </Button>
     </Paper>
