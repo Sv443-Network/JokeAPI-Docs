@@ -1,4 +1,4 @@
-import { Button, Paper } from "@mui/material";
+import { Button, Grid, Paper, Typography } from "@mui/material";
 import { navigate } from "@site/src/utils";
 
 export type PricingOptionData = {
@@ -10,10 +10,12 @@ export type PricingOptionData = {
     label: string;
     redirect: string;
   };
+  backgroundColor?: string;
 };
 
 type PricingOptionProps = PricingOptionData & {
   width?: number | string;
+  backgroundColor?: string;
 }
 
 export function PricingOption({
@@ -23,35 +25,91 @@ export function PricingOption({
   features,
   button,
   width = 400,
+  backgroundColor = "#34c",
 }: PricingOptionProps) {
   return (
-    <Paper sx={{
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      padding: 4,
-      paddingTop: 2,
-      width,
-      height: "100%",
-    }}>
-      <h2>{title}</h2>
-      <p style={{
-        minHeight: 80,
+    <Paper
+      elevation={3}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width,
+        height: "100%",
+      }}
+    >
+      <div style={{
+        width: "100%",
       }}>
-        {description}
-      </p>
-      <h3>{price}</h3>
-      <ul style={{
-        marginBottom: 30,
+        <Paper style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          paddingTop: 16,
+          paddingBottom: 16,
+          backgroundColor,
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
+        }}>
+          <Typography variant="h4">{title}</Typography>
+        </Paper>
+        <div style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          alignItems: "center",
+        }}>
+          <Grid
+            container
+            direction="column"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              flexWrap: "nowrap",
+              padding: 16,
+              paddingTop: 32,
+              paddingBottom: 32,
+            }}
+          >
+            <Grid item xs={4}>
+              <Typography
+                variant="body1"
+                style={{
+                  minHeight: 80,
+                  textAlign: "center",
+                }}
+              >
+                {description}
+              </Typography>
+            </Grid>
+            <Grid item xs={4} style={{ marginBottom: 40 }}>
+              <Typography variant="h5">{price}</Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <ul style={{
+                marginBottom: 30,
+              }}>
+                {features.map((feature, i) => (
+                  <li key={`pricingopt-${title}-feat-${i}`}>
+                    <Typography variant="body1">{feature}</Typography>
+                  </li>
+                ))}
+              </ul>
+            </Grid>
+          </Grid>
+        </div>
+      </div>
+      <div style={{
+        padding: 16,
       }}>
-        {features.map((feature, i) => (
-          <li key={`pricingopt-${title}-feat-${i}`}>{feature}</li>
-        ))}
-      </ul>
-      <Button onClick={() => navigate(button.redirect)}>
-        {button.label}
-      </Button>
+        <Button onClick={() => navigate(button.redirect)}>
+          {button.label}
+        </Button>
+      </div>
     </Paper>
   );
 }
