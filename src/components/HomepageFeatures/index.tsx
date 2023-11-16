@@ -61,7 +61,7 @@ function Feature({ title, Svg, description }: FeatureProps) {
   );
 }
 
-export default function HomepageFeatures(): JSX.Element {
+export function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">

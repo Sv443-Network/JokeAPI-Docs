@@ -3,41 +3,33 @@ import { persist } from "zustand/middleware";
 import { OAuthProvider } from "./types";
 
 export interface UserStore {
-  avatarUrl: string | null;
-  username: string | null;
+  avatarUrl?: string;
+  username?: string;
+  setUser: (user: Pick<UserStore, "avatarUrl" | "username">) => void,
 }
 
 export interface AuthStore {
-  provider: OAuthProvider | null;
-  accessToken: string | null;
-  refreshToken: string | null;
-  expiresIn: number | null;
-  tokenType: string | null;
+  provider?: OAuthProvider;
+  accessToken?: string;
+  refreshToken?: string;
+  expiresIn?: number;
+  tokenType?: string;
+  setAuth: (auth: Pick<AuthStore, "provider" | "accessToken" | "refreshToken" | "expiresIn" | "tokenType">) => void,
 }
+
+export const useUserStore = create<UserStore>(
+  (set, _get) => ({
+    setUser: (user: Parameters<UserStore["setUser"]>[0]) => set({ ...user }),
+  }),
+);
 
 export const useAuthStore = create(
   persist<AuthStore>(
     (set, _get) => ({
-      provider: null,
-      accessToken: null,
-      refreshToken: null,
-      expiresIn: null,
-      tokenType: null,
-      setAuth: (auth: AuthStore) => set({ ...auth }),
+      setAuth: (auth: Parameters<AuthStore["setAuth"]>[0]) => set({ ...auth }),
     }),
     {
       name: "auth", // name of the item in the storage (must be unique)
     },
   ),
-);
-
-export const useUserStore = create<UserStore>(
-  (set, _get) => ({
-    // avatarUrl: null,
-    // username: null,
-    // #DEBUG
-    avatarUrl: "https://picsum.photos/100/100",
-    username: "Sv443",
-    setUser: (auth: UserStore) => set({ ...auth }),
-  }),
 );

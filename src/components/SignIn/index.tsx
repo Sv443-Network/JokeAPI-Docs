@@ -52,11 +52,11 @@ export function SignIn(_props: SignInProps) {
                     borderRadius: "10%",
                   }}
                 />
-                <Typography variant="caption">{username}</Typography>
+                <Typography variant="body1">{username}</Typography>
               </div>
             ) : (
               <>
-                <Typography variant="caption">Sign in</Typography>
+                <Typography variant="body1">Sign in</Typography>
               </>
             )}
             {popoverOpen ? <KeyboardArrowUp /> : <KeyboardArrowDown />}

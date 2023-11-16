@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import { ArrowForward } from "@mui/icons-material";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { Layout } from "@site/src/components/Layout";
-import HomepageFeatures from "@site/src/components/HomepageFeatures";
+import { HomepageFeatures } from "@site/src/components/HomepageFeatures";
 import styles from "./index.module.css";
 import { navigate } from "../utils";
 
