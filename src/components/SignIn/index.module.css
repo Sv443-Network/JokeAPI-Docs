@@ -1,0 +1,28 @@
+.buttonImg {
+  --size: 22px;
+  width: var(--size);
+  height: var(--size);
+}
+
+.popoverContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.popoverLoginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+  gap: 5px;
+}
+
+.loggedInBtnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 10px;
+}

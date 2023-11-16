@@ -17,7 +17,7 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) => muiCreateTheme(
       mode: "light",
       background: { default: "#fff" },
       text: { primary: "#000" },
-      primary: { main: "#2e8555" },
+      primary: { main: "#4ebf81" },
       secondary: { main: "#25c2a0" },
       error: { main: "#cf6679" },
     }),

@@ -16,7 +16,12 @@ export const NotSignedIn = () => {
     username: undefined,
   });
   return (
-    <SignIn />
+    <div style={{
+      display: "flex",
+      justifyContent: "flex-end",
+    }}>
+      <SignIn />
+    </div>
   );
 };
   
@@ -27,6 +32,11 @@ export const SignedIn = () => {
     username: "Sv443",
   });
   return (
-    <SignIn />
+    <div style={{
+      display: "flex",
+      justifyContent: "flex-end",
+    }}>
+      <SignIn />
+    </div>
   );
 };
