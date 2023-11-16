@@ -6,13 +6,11 @@ module.exports = {
   },
   ignorePatterns: [
     "*.min.*",
-    "webpack.config.js",
-    "*.user.js",
-    "*.map",
-    "dist/**",
+    "build/",
   ],
   extends: [
     "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
   ],
   globals: {
@@ -23,9 +21,15 @@ module.exports = {
   },
   parser: "@typescript-eslint/parser",
   parserOptions: {
+    sourceType: "module",
     ecmaVersion: "latest",
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   plugins: [
+    "react",
+    "react-hooks",
     "@typescript-eslint",
   ],
   rules: {
@@ -46,8 +50,15 @@ module.exports = {
     }],
     "comma-dangle": ["error", "only-multiline"],
     "no-misleading-character-class": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
   },
   overrides: [
+    {
+      files: ["*.ts", "*.tsx"],
+    },
     {
       files: ["**.js"],
       rules: {
@@ -61,4 +72,9 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
 };

@@ -20,8 +20,8 @@ const featureList: FeatureProps[] = [
     Svg: (await import("@site/static/img/undraw_docusaurus_mountain.svg")).default,
     description: (
       <>
-        JokeAPI offers a wide variety of jokes to fit everyone's taste.<br/>
-        With {jokesAmt} jokes in {languagesAmt} languages, you're guaranteed to find something you like.
+        {"JokeAPI offers a wide variety of jokes to fit everyone's taste."}<br/>
+        {`With ${jokesAmt} jokes in ${languagesAmt} languages, you're guaranteed to find something you like.`}
       </>
     ),
   },

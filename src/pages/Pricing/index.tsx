@@ -59,11 +59,13 @@ export default function PricingHome() {
           marginBottom: 50,
         }}>
           {pricingOptions.map((option) => (
-            <PricingOption {...{
-              key: `pricingopt-${option.title}`,
-              ...option,
-              width: 400,
-            }} />
+            <PricingOption
+              key={`pricingopt-${option.title}`}
+              {...{
+                ...option,
+                width: 400,
+              }}
+            />
           ))}
         </div>
       </div>
