@@ -11,25 +11,24 @@ export default function NavbarWrapper(props: Record<string, unknown>) {
   const theme = createTheme({ darkMode: colorMode === "dark" });
 
   useEffect(() => {
-    const navbarItemsRight = document.querySelector(".navbar__items--right");
-    if(!navbarItemsRight)
-      return;
-  
-    const oldSigninCont = document.querySelector("#signin-container");
-    if(oldSigninCont)
-      oldSigninCont.remove();
+    const navbarItemsRight = document.getElementsByClassName("navbar__items--right")?.[0];
+    if(navbarItemsRight) {
+      const signinContainer = document.createElement("div");
+      signinContainer.id = "signin-container";
+      signinContainer.style.marginLeft = "10px";
+      navbarItemsRight.appendChild(signinContainer);
+    
+      const signinRoot = createRoot(signinContainer);
+      signinRoot.render((
+        <ThemeProvider {...{ theme }}>
+          <SignIn />
+        </ThemeProvider>
+      ));
+    }
 
-    const signinContainer = document.createElement("div");
-    signinContainer.id = "signin-container";
-    signinContainer.style.marginLeft = "10px";
-    navbarItemsRight.appendChild(signinContainer);
-  
-    const root = createRoot(signinContainer);
-    root.render((
-      <ThemeProvider {...{ theme }}>
-        <SignIn />
-      </ThemeProvider>
-    ));
+    return () => {
+      document.getElementById("signin-container")?.remove();
+    };
   }, [theme]);
 
   return (
