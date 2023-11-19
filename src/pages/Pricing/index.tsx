@@ -2,40 +2,64 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { PricingOption, PricingOptionData } from "./PricingOption";
 import { Layout } from "@site/src/components/Layout";
 import { Grid, useTheme } from "@mui/material";
+import { ArrowForward, ArrowOutward } from "@mui/icons-material";
 
 const pricingOptions: PricingOptionData[] = [
   {
-    title: "Open Source",
-    description: "For small projects on a tight (or nonexistent) budget and for evaluation",
+    title: "Free (Public)",
+    description: "For the smallest of projects or testing",
     price: "Free!",
     features: [
-      "1 request per minute",
-      "10 requests per day",
+      "2 requests per minute",
+      "30 requests per day",
       "basic filter parameters",
-      "ads on documentation",
+      "ads in the documentation",
+      // "ads in requests", //?
     ],
     button: {
-      label: "Start now for free",
+      label: "Start using it",
       redirect: "/docs/intro",
+      icon: <ArrowOutward />,
+      variant: "outlined",
     },
-    backgroundColor: "#34c",
+    backgroundColor: "#23c",
+  },
+  {
+    title: "Free (Sign up)",
+    description: "For small projects on a tight (or nonexistent) budget or evaluation",
+    price: "Free!",
+    features: [
+      "10 requests per minute",
+      "500 requests per day",
+      "basic filter parameters",
+      "ads in the documentation",
+    ],
+    button: {
+      label: "Sign up",
+      redirect: "/login?TODO",
+      icon: <ArrowForward />,
+      variant: "contained",
+    },
+    backgroundColor: "#193",
   },
   {
     title: "Professional",
     description: "For larger projects and teams",
-    price: "$69.99",
+    price: "$6 / mo",
     features: [
-      "2 requests per minute",
-      "11 requests per day",
-      "advanced filters",
+      "200 requests per minute",
+      "50,000 requests per day",
+      "advanced joke filters",
+      "no ads in the documentation",
       "no repetition of jokes",
-      "no ads on documentation",
     ],
     button: {
-      label: "Sign up now",
-      redirect: "/subscribe?plan=pro",
+      label: "Subscribe",
+      redirect: "/subscribe?plan=pro&TODO",
+      icon: <ArrowForward />,
+      variant: "contained",
     },
-    backgroundColor: "#1a3",
+    backgroundColor: "#913",
   },
 ];
 

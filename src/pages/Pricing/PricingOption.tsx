@@ -1,5 +1,6 @@
 import { Button, Grid, Paper, Typography } from "@mui/material";
 import { navigate } from "@site/src/utils";
+import { ComponentProps, ReactNode } from "react";
 
 export type PricingOptionData = {
   title: string;
@@ -9,6 +10,8 @@ export type PricingOptionData = {
   button: {
     label: string;
     redirect: string;
+    icon?: ReactNode;
+    variant?: ComponentProps<typeof Button>["variant"];
   };
   backgroundColor?: string;
 };
@@ -105,8 +108,18 @@ export function PricingOption({
       </div>
       <div style={{
         padding: 16,
+        marginBottom: 32,
       }}>
-        <Button onClick={() => navigate(button.redirect)}>
+        <Button
+          onClick={() => navigate(button.redirect)}
+          sx={{
+            paddingX: 4,
+          }}
+          {...{
+            ...(button.icon ? { endIcon: button.icon } : {}),
+            ...(button.variant ? { variant: button.variant } : {}),
+          }}
+        >
           {button.label}
         </Button>
       </div>
