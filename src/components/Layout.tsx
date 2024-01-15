@@ -1,8 +1,8 @@
 import { ComponentProps } from "react";
 import OriginalLayout from "@theme/Layout";
-import { MuiThemeProvider } from "./MuiThemeProvider";
+import MuiThemeProvider from "./MuiThemeProvider";
 
-export function Layout(props: ComponentProps<typeof OriginalLayout>) {
+export default function Layout(props: ComponentProps<typeof OriginalLayout>) {
   const { children, ...rest } = props;
 
   return (

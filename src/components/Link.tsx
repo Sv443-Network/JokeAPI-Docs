@@ -5,7 +5,13 @@ type LinkProps = {
   children?: React.ReactNode;
 } & Partial<ComponentProps<"a">>;
 
-export function Link({ href, children, ...rest }: LinkProps) {
+export default function Link({ href, children, ...rest }: LinkProps) {
+  try {
+    new URL(href);
+  }
+  catch {
+    throw new Error(`Invalid URL: ${href}`);
+  }
   return (
     <a {...{
       href,

@@ -1,6 +1,6 @@
 import { Button, Grid, Paper, Typography } from "@mui/material";
 import { navigate } from "@site/src/utils";
-import { ComponentProps, ReactNode } from "react";
+import { ComponentProps, ReactNode, useMemo } from "react";
 
 export type PricingOptionData = {
   title: string;
@@ -13,15 +13,16 @@ export type PricingOptionData = {
     icon?: ReactNode;
     variant?: ComponentProps<typeof Button>["variant"];
   };
-  backgroundColor?: string;
+  backgroundColor?: `#${string}`;
 };
 
 type PricingOptionProps = PricingOptionData & {
   width?: number | string;
-  backgroundColor?: string;
+  backgroundColor?: `#${string}`;
+  fontColor?: `#${string}`;
 }
 
-export function PricingOption({
+export default function PricingOption({
   title,
   description,
   price,
@@ -29,7 +30,23 @@ export function PricingOption({
   button,
   width = 400,
   backgroundColor = "#34c",
+  fontColor,
 }: PricingOptionProps) {
+  const fontColorCalc = useMemo(() => {
+    if(fontColor)
+      return fontColor;
+    const bgCol = backgroundColor?.slice(1);
+    const bgColParts = (bgCol.match(/.{6}/) ? bgCol.match(/.{2}/g) : bgCol.match(/./g));
+    if(!bgColParts)
+      return "#fff";
+    const bgColPartsNum = bgColParts.map((part) => parseInt(part, 16));
+    const [red, green, blue] = bgColPartsNum as [number, number, number];
+    const contrast = red * 0.299 + green * 0.587 + blue * 0.114;
+    if(contrast > 186 && !isNaN(contrast))
+      return "#000";
+    return "#fff";
+  }, [backgroundColor, fontColor]);
+
   return (
     <Paper
       elevation={3}
@@ -57,7 +74,7 @@ export function PricingOption({
           borderBottomLeftRadius: 0,
           borderBottomRightRadius: 0,
         }}>
-          <Typography variant="h4">{title}</Typography>
+          <Typography variant="h4" color={fontColorCalc}>{title}</Typography>
         </Paper>
         <div style={{
           display: "flex",

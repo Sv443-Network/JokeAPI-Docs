@@ -2,7 +2,7 @@
 import React from "react";
 import { Meta } from "@storybook/react";
 import { useUserStore } from "@site/src/store";
-import { SignIn } from ".";
+import SignIn from ".";
 
 export default {
   title: "Components/SignIn",

@@ -1,9 +1,9 @@
-import { Button, ButtonBase, Paper, Popover, Stack, Typography, useTheme } from "@mui/material";
-import { AutoFixHigh, Google, KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
+import { Button, ButtonBase, Popover, Stack, Typography, useTheme } from "@mui/material";
+import { AutoFixHigh, KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { useCallback, useState, MouseEvent, ComponentProps } from "react";
 import clsx from "clsx";
 import { useUserStore } from "@site/src/store";
-import { OAuthProvider } from "@site/src/types";
+import type { OAuthProvider } from "@site/src/types";
 import { navigate } from "@site/src/utils";
 import styles from "./index.module.css";
 
@@ -12,7 +12,7 @@ type SignInProps = ComponentProps<typeof ButtonBase>;
 // TODO
 const placeholderUrl = "https://picsum.photos/100/100";
 
-export function SignIn({ ...rest }: SignInProps) {
+export default function SignIn({ ...rest }: SignInProps) {
   const { username, avatarUrl, setUser } = useUserStore();
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -30,7 +30,7 @@ export function SignIn({ ...rest }: SignInProps) {
   const getOAuthLogo = useCallback((provider: OAuthProvider) => {
     return (
       <img src={`/img/external/${provider}.svg`} style={{ width: "1em", height: "1em" }} />
-    )
+    );
   }, [theme.palette.mode]);
 
   const oauthSignIn = useCallback((provider: OAuthProvider) => {

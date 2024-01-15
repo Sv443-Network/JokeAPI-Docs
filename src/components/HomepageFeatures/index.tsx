@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.css";
-import { Link } from "../Link";
+import Link from "../Link";
 
 type FeatureProps = {
   title: string;
@@ -61,7 +61,7 @@ function Feature({ title, Svg, description }: FeatureProps) {
   );
 }
 
-export function HomepageFeatures(): JSX.Element {
+export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">

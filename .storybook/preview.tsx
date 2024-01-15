@@ -2,7 +2,7 @@ import { themes } from "@storybook/theming";
 import { useDarkMode } from "storybook-dark-mode";
 import React from "react";
 import type { Preview } from "@storybook/react";
-import { StorybookThemeProvider } from "./StorybookThemeProvider";
+import StorybookThemeProvider from "./StorybookThemeProvider";
 
 const preview: Preview = {
   parameters: {

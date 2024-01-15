@@ -107,7 +107,7 @@ const config: Config = {
         },
         {
           label: "GitHub",
-          href: "https://github.com/Sv443/JokeAPI",
+          href: "https://github.com/Sv443-Network/JokeAPI",
           position: "right",
         },
       ],
@@ -163,7 +163,7 @@ const config: Config = {
             },
             {
               label: "GitHub Discussions",
-              href: "https://github.com/Sv443/JokeAPI/discussions",
+              href: "https://github.com/Sv443-Network/JokeAPI/discussions",
             },
           ],
         },
@@ -176,7 +176,7 @@ const config: Config = {
             },
             {
               label: "GitHub",
-              href: "https://github.com/Sv443/JokeAPI",
+              href: "https://github.com/Sv443-Network/JokeAPI",
             },
           ],
         },

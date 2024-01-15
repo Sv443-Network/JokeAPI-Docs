@@ -3,8 +3,8 @@ import clsx from "clsx";
 import { Button } from "@mui/material";
 import { ArrowForward } from "@mui/icons-material";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { Layout } from "@site/src/components/Layout";
-import { HomepageFeatures } from "@site/src/components/HomepageFeatures";
+import Layout from "@site/src/components/Layout";
+import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import { navigate } from "../utils";
 import styles from "./index.module.css";
 

@@ -3,7 +3,7 @@ import { useDarkMode } from "storybook-dark-mode";
 import React, { ComponentProps } from "react";
 import { createTheme } from "../src/theme";
 
-export function StorybookThemeProvider(props: Omit<ComponentProps<typeof ThemeProvider>, "theme">) {
+export default function StorybookThemeProvider(props: Omit<ComponentProps<typeof ThemeProvider>, "theme">) {
   const darkMode = useDarkMode();
   const theme = createTheme({ darkMode });
 

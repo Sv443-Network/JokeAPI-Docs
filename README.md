@@ -1,7 +1,7 @@
 # JokeAPI Homepage
 <h4>
 
-[JokeAPI](https://github.com/Sv443/JokeAPI) is a RESTful API that serves uniformly and well formatted jokes.  
+[JokeAPI](https://github.com/Sv443-Network/JokeAPI) is a RESTful API that serves uniformly and well formatted jokes.  
 This is its homepage, powered by [Docusaurus.](https://docusaurus.io/)  
   
 View the live page at [v3.jokeapi.dev](https://v3.jokeapi.dev)
@@ -29,14 +29,14 @@ Please refer to the [contributing guide](./contributing.md) for information on h
 | :-- | :-- |
 | `npm run start` | Builds the page and serves it locally. Rebuilds and hot-reloads it automatically when code changes. |
 | `npm run lint` | Runs ESLint to find any errors and bad formatting. |
-| `npm run storybook` | Runs Storybook for testing components without the overhead of the rest of the website. |
-| `npm run clear` | Deletes the cache and generated files of Docusaurus. |
+| `npm run storybook` | Runs Storybook for creating and testing components without the overhead of the rest of the website. |
 | `npm run build` | Builds the static page into the `build` folder for deployment. |
+| `npm run write-translations` | Extracts the translatable strings into JSON files in the `i18n` folder. |
+| `npm run write-heading-ids` | Generates heading IDs in markdown files. |
+| `npm run clear` | Deletes the cache and generated files of Docusaurus. |
 | `npm run swizzle @docusaurus/theme-classic <component_name>` | Generates a [swizzled](https://docusaurus.io/docs/swizzling) component, i.e. allows for modifying components that are part of the preset theme. |
 | `npm run docusaurus -- <command>` | Runs any Docusaurus CLI command |
 | `npm run serve` | Serves the static output of `npm run build` for locally testing a production deployment. |
-| `npm run write-translations` | Extracts the translatable strings into JSON files in the `i18n` folder. |
-| `npm run write-heading-ids` | Generates heading IDs in markdown files. |
 | `npm run typecheck` | Uses TypeScript compiler to check for type errors. |
 
 <br><br>
