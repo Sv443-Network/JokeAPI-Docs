@@ -31,7 +31,7 @@ export default function SignIn({ ...rest }: SignInProps) {
     return (
       <img src={`/img/external/${provider}.svg`} style={{ width: "1em", height: "1em" }} />
     );
-  }, [theme.palette.mode]);
+  }, []);
 
   const oauthSignIn = useCallback((provider: OAuthProvider) => {
     alert(`TODO: sign in with ${provider}`);
@@ -43,7 +43,7 @@ export default function SignIn({ ...rest }: SignInProps) {
       avatarUrl: "https://github.com/Sv443.png",
     });
     closeProfilePopover();
-  }, []);
+  }, [closeProfilePopover, setUser]);
 
   return (
     <>
