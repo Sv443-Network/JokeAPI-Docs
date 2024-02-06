@@ -17,7 +17,7 @@ Please refer to the [contributing guide](./contributing.md) for information on h
 
 ## Development
 ### Installation
-1. Install Node.js v18+
+1. Install Node.js LTS or Current
 2. Clone the repository
 3. Install the dependencies with `npm i`
 4. Refer to [CLI commands](#clicommands)
