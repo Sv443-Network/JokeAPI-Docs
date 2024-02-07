@@ -1,0 +1,58 @@
+{
+  // >> Other:
+  // prefer relative imports:
+  "javascript.preferences.importModuleSpecifier": "relative",
+  // TODO: should probably be done through prettier instead:
+  "editor.tabSize": 2,
+  "files.associations": {
+    "*.env": "dotenv",
+    "*.env.template": "dotenv",
+  },
+
+  // git settings:
+  "git.branchPrefix": "feat/",
+  // "git.branchProtection": ["main"],
+  // "git.branchProtectionPrompt": "alwaysPrompt"
+
+  // >> ESLint:
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["typescript"],
+
+  // >> VSCode-Highlight:
+  "highlight.regexes": {
+    "(((jsl|scl)\\.)?unused\\([a-zA-Z_,\\[\\]\\s\\-\":.]+\\);*)": [
+      // jsl.unused([some_var, some_other_var]); or scl.unused(xy);
+      {
+        "backgroundColor": "#0003",
+        "color": "#f88"
+      }
+    ],
+    "(#MARKER)": [
+      // #MARKER test
+      {
+        "backgroundColor": "#f41",
+        "color": "#fff",
+        "isWholeLine": true,
+        "overviewRulerColor": "#f41"
+      }
+    ],
+    "(#SECTION ([^\\S\\r\\n]*[\\w,.\\-_]+)*[:]*)": [
+      // #SECTION test, 123
+      {
+        "backgroundColor": "#44f",
+        "color": "#fff",
+        "overviewRulerColor": "#44f"
+      }
+    ],
+    "(#?DE?BU?G#?)": [
+      // #DEBUG# or #DBG or DEBUG or DBG
+      {
+        "backgroundColor": "#ff0",
+        "color": "#00f",
+        "overviewRulerColor": "#ff0"
+      }
+    ]
+  },
+}

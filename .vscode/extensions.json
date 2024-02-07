@@ -1,0 +1,14 @@
+{
+  // these are only recommendations, tho I **highly** recommend at least getting the first few ones
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "fabiospampinato.vscode-highlight",
+    "MylesMurphy.prettify-ts",
+    "naumovs.color-highlight",
+    // not as important, but still nice:
+    "bierner.jsdoc-markdown-highlighting",
+    "bierner.markdown-checkbox",
+    "bierner.markdown-preview-github-styles",
+    "Orta.vscode-twoslash-queries"
+  ],
+}
