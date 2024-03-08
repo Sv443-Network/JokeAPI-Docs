@@ -23,5 +23,10 @@
     "strict": true,
     "useDefineForClassFields": true,
     "noImplicitThis": false,
-  }
+  },
+  "exclude": [
+    "node_modules",
+    ".docusaurus",
+    "build",
+  ],
 }
