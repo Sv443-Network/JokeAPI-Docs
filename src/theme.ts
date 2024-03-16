@@ -11,10 +11,14 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
 				? {
 						mode: "dark",
 						background: { default: "#1b1b1d" },
-						text: { primary: "#fff", secondary: "#e3e3e3" },
+						text: {
+							primary: "#fff",
+							secondary: "#e3e3e3",
+						},
 						primary: { main: "#673AB7" },
 						secondary: { main: "#FFC107" },
 						error: { main: "#cf6679" },
+						contrastText: "#000",
 				  }
 				: {
 						mode: "light",
@@ -23,6 +27,8 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
 						primary: { main: "#673AB7" },
 						secondary: { main: "#FFC107" },
 						error: { main: "#cf6679" },
+						contrastText: "#fff",
+						secondaryBackground: "#F0F0F0",
 				  }),
 		},
 		components: {
@@ -38,5 +44,8 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
 					text: { textTransform: "none" },
 				},
 			},
+		},
+		typography: {
+			fontFamily: `"Inter", "Roboto", "serif"`,
 		},
 	});
