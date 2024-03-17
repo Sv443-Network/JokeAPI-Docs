@@ -50,7 +50,7 @@ jobs:
         with:
           push: true
           tags: |
-            ghcr.io/Sv443-Network/JAPI-Docs:latest
-            ghcr.io/Sv443-Network/JAPI-Docs:${{ github.sha }}
+            ghcr.io/sv443-network/japi-docs:latest
+            ghcr.io/sv443-network/japi-docs:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

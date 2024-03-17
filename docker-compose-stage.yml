@@ -1,11 +1,8 @@
-# This is a docker-compose file for running the Sv443-Network/JAPI-Docs
-# Run the latest image of Sv443-Network/JAPI-Docs and expose it on port 8059
-
 version: "3.7"
 
 services:
   japi-docs:
-    image: sv443network/japi-docs:latest
+    image: sv443-network/japi-docs:latest
     container_name: japi-docs
     restart: unless-stopped
     ports:
