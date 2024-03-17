@@ -17,15 +17,15 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 export default function MuiThemeProvider(
-	props: Omit<ComponentProps<typeof ThemeProvider>, "theme">,
+  props: Omit<ComponentProps<typeof ThemeProvider>, "theme">,
 ) {
-	const { colorMode } = useColorMode();
-	const theme = createTheme({ darkMode: colorMode === "dark" });
+  const { colorMode } = useColorMode();
+  const theme = createTheme({ darkMode: colorMode === "dark" });
 
-	return (
-		<ThemeProvider {...{ theme }}>
-			<CssBaseline />
-			{props.children}
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider {...{ theme }}>
+      <CssBaseline />
+      {props.children}
+    </ThemeProvider>
+  );
 }
