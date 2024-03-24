@@ -65,14 +65,15 @@ function Feature({ title, svgPath, description, index }: FeatureProps) {
       }}
       alignContent='center'
       justifyContent='center'
-      gap={{ sm: 3, md: "5em", lg: "8em" }}
+      gap={{ xs: 4, sm: 3, md: "5em", lg: "8em" }}
       bgcolor={index % 2 === 0 ? "background.default" : "secondaryBackground"}
       py='3rem'
+      px={{ xs: "5vw", sm: "unset", md: "unset", lg: "unsset", xl: "unset" }}
     >
       <Box
         component='img'
         src={svgPath}
-        width='36vw'
+        width={{ xs: "80vw", md: "35vw", lg: "36vw" }}
         height='auto'
       />
 
