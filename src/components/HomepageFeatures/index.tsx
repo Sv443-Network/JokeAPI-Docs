@@ -90,6 +90,7 @@ function Feature({ title, svgPath, description, index }: FeatureProps) {
         <Typography
           component='h3'
           fontWeight={700}
+          sx={{ fontSize: { sm: "35px", lg: "47px", xl: "50px" } }}
           fontSize={{ sm: "35px", lg: "47px", xl: "50px" }}
           pt='5px'
           fontFamily='Outfit Variable'
@@ -99,9 +100,9 @@ function Feature({ title, svgPath, description, index }: FeatureProps) {
         </Typography>
 
         <Typography
-          component='p'
-          fontSize={{ xs: "20px", lg: "20px" }}
           sx={{ fontWeight: 300 }}
+          component='p'
+          fontSize={{ xs: "16px", md: "18px", lg: "20px" }}
           fontFamily='Inter Variable'
           color='text.secondary'
         >
