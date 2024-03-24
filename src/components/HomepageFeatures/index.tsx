@@ -88,10 +88,9 @@ function Feature({ title, svgPath, description, index }: FeatureProps) {
         mx={{ xs: "auto", lg: "unset" }}
       >
         <Typography
-          component='h3'
+          component='h2'
           fontWeight={700}
-          sx={{ fontSize: { sm: "35px", lg: "47px", xl: "50px" } }}
-          fontSize={{ sm: "35px", lg: "47px", xl: "50px" }}
+          fontSize={{ xs: "30px", sm: "35px", lg: "47px", xl: "50px" }}
           pt='5px'
           fontFamily='Outfit Variable'
           lineHeight='1.3'
