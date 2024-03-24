@@ -61,11 +61,11 @@ function Feature({ title, svgPath, description, index }: FeatureProps) {
     <Stack
       flexDirection={{
         sm: "column",
-        md: index % 2 === 0 ? "row" : "row-reverse",
+        lg: index % 2 === 0 ? "row" : "row-reverse",
       }}
       alignContent='center'
       justifyContent='center'
-      gap={{ xs: 4, sm: 3, md: "5em", lg: "8em" }}
+      gap={{ xs: 4, sm: 3, md: "6vw", lg: "8em" }}
       bgcolor={index % 2 === 0 ? "background.default" : "secondaryBackground"}
       py='3rem'
       px={{ xs: "5vw", sm: "unset", md: "unset", lg: "unsset", xl: "unset" }}
@@ -73,22 +73,24 @@ function Feature({ title, svgPath, description, index }: FeatureProps) {
       <Box
         component='img'
         src={svgPath}
-        width={{ xs: "80vw", md: "35vw", lg: "36vw" }}
-        height='auto'
+        width={{ xs: "678px", lg: "36vw" }}
+        height='max-content'
+        mx={{ xs: "auto", lg: "unset" }}
       />
 
       <Stack
         flexDirection='column'
         justifyContent='center'
         gap={4}
-        maxWidth={{ sm: "85%", md: "25%" }}
+        maxWidth={{ sm: "85%", lg: "25%" }}
         textAlign={{ sm: "left", md: "left" }}
-        mt={{ sm: 5, md: "unset" }}
+        mt={{ sm: 5, lg: "unset" }}
+        mx={{ xs: "auto", lg: "unset" }}
       >
         <Typography
           component='h3'
           fontWeight={700}
-          fontSize={{ lg: "47px" }}
+          fontSize={{ sm: "35px", lg: "47px", xl: "50px" }}
           pt='5px'
           fontFamily='Outfit Variable'
           lineHeight='1.3'
@@ -98,7 +100,7 @@ function Feature({ title, svgPath, description, index }: FeatureProps) {
 
         <Typography
           component='p'
-          fontSize={{ lg: "20px" }}
+          fontSize={{ xs: "20px", lg: "20px" }}
           sx={{ fontWeight: 300 }}
           fontFamily='Inter Variable'
           color='text.secondary'
