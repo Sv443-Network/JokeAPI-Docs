@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 import Link from "../Link";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Icon, Stack, Typography } from "@mui/material";
 
 type FeatureProps = {
-	title: string;
-	Svg: React.ComponentType<React.ComponentProps<"svg">>;
-	description: JSX.Element;
-	index: number;
+  title: string;
+  svgPath: string;
+  description: JSX.Element;
+  index: number;
 };
 
 const jokesAmt = 420; // TODO: get this from the API
@@ -15,52 +15,48 @@ const languagesAmt = 69; // TODO: get this from the API too
 
 const featureList = [
   {
-    title: "Large variety of jokes",
-    Svg: (await import("@site/static/img/undraw_docusaurus_mountain.svg"))
-      .default,
+    title: "Choose from a large variety of jokes",
+    svgPath: "/img/undraw_docusaurus_mountain.svg",
     description: (
       <>
-				JokeAPI offers a wide variety of jokes to fit everyone&apos;s taste.
+        JokeAPI offers a wide variety of jokes to fit everyone&apos;s taste.
         {` With ${jokesAmt} jokes in ${languagesAmt} languages, you're guaranteed to find something you like.`}
       </>
     ),
   },
   {
     title: "Easy filtering",
-    Svg: (await import("@site/static/img/undraw_docusaurus_tree.svg"))
-      .default,
+    svgPath: "/img/undraw_docusaurus_tree.svg",
     description: (
       <>
-				With JokeAPI, you can filter jokes by category, type, language,
-				and more. This way you can get the jokes you want, and nothing
-				else. With JokeAPI, you can filter jokes by category, type,
-				language, and more.
+        With JokeAPI, you can filter jokes by category, type, language, and
+        more. This way you can get the jokes you want, and nothing else. With
+        JokeAPI, you can filter jokes by category, type, language, and more.
       </>
     ),
   },
   {
     title: "Community",
-    Svg: (await import("@site/static/img/undraw_docusaurus_react.svg"))
-      .default,
+    svgPath: "/img/undraw_docusaurus_react.svg",
     description: (
       <>
-				With jokes submitted by the community, there will always be new
-				jokes to discover.
+        With jokes submitted by the community, there will always be new jokes to
+        discover.
         <br />
-				You can even{" "}
+        You can even{" "}
         <Link
           href='https://example.org/TODO'
           target='_self'
         >
-					submit your own jokes
+          submit your own jokes
         </Link>{" "}
-				to share with the world!
+        to share with the world!
       </>
     ),
   },
 ];
 
-function Feature({ title, Svg, description, index }: FeatureProps) {
+function Feature({ title, svgPath, description, index }: FeatureProps) {
   return (
     <Stack
       flexDirection={{
@@ -69,18 +65,16 @@ function Feature({ title, Svg, description, index }: FeatureProps) {
       }}
       alignContent='center'
       justifyContent='center'
-      gap={{ sm: 3, md: "5em" }}
-      bgcolor={
-        index % 2 === 0 ? "background.default" : "secondaryBackground"
-      }
+      gap={{ sm: 3, md: "5em", lg: "8em" }}
+      bgcolor={index % 2 === 0 ? "background.default" : "secondaryBackground"}
       py='3rem'
     >
-      <Box maxWidth={{ sm: "80%", md: "65%" }}>
-        <Svg
-          width='auto'
-          height='300px'
-        />
-      </Box>
+      <Box
+        component='img'
+        src={svgPath}
+        width='36vw'
+        height='auto'
+      />
 
       <Stack
         flexDirection='column'
@@ -92,18 +86,21 @@ function Feature({ title, Svg, description, index }: FeatureProps) {
       >
         <Typography
           component='h3'
-          fontWeight={800}
-          fontSize='40px'
+          fontWeight={700}
+          fontSize={{ lg: "47px" }}
           pt='5px'
+          fontFamily='Outfit Variable'
+          lineHeight='1.3'
         >
           {title}
         </Typography>
 
         <Typography
           component='p'
-          fontSize='18px'
-          fontWeight={300}
-          fontFamily='Inter'
+          fontSize={{ lg: "20px" }}
+          sx={{ fontWeight: 300 }}
+          fontFamily='Inter Variable'
+          color='text.secondary'
         >
           {description}
         </Typography>

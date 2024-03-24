@@ -15,7 +15,7 @@ function HomepageHeader() {
     <Box
       component='header'
       bgcolor='primary.main'
-      p='4rem'
+      p={{ xs: "2.5em", lg: "4em" }}
       py='5rem'
     >
       <Stack
@@ -23,68 +23,82 @@ function HomepageHeader() {
         className='container'
         width='100%'
         textAlign='center'
-        gap={2}
+        gap={6}
       >
-        <Stack
-          flexDirection='row'
-          justifyContent='center'
-        >
-          <img
-            src='./img/JAPI3_temp_128.png'
-            alt='Logo'
-            className={styles.logo}
-          />
+        <Stack gap={3}>
+          <Stack
+            flexDirection='row'
+            justifyContent='center'
+          >
+            <Box
+              component='img'
+              src='./img/JAPI3_temp_128.png'
+              width='80px'
+              alt='Logo'
+            />
+
+            <Typography
+              color='#ffff'
+              variant='h1'
+              my='auto'
+              ml={"10px"}
+              fontFamily='Outfit Variable'
+              fontSize={{
+                xs: "50px",
+                sm: "55px",
+                md: "60px",
+                lg: "65px",
+                xl: "65px",
+              }}
+              fontWeight='bold'
+            >
+              {siteConfig.title}
+            </Typography>
+          </Stack>
 
           <Typography
-            color='#ffff'
-            variant='h1'
-            fontSize='50px'
-            fontWeight='800'
-            my='auto'
-            ml={"10px"}
+            component='h2'
+            color='#fff'
+            fontSize={{
+              xs: "25px",
+              sm: "25px",
+              md: "27px",
+              lg: "30px",
+              xl: "33px",
+            }}
+            fontFamily='"Staatliches", system-ui'
           >
-            {siteConfig.title}
+            {/* {siteConfig.tagline} */}
+            Get your funny up, bozo!
           </Typography>
         </Stack>
-
-        <Typography
-          mb={4}
-          component='h2'
-          color='#fff'
-          fontSize='19px'
-          fontWeight={300}
-          fontFamily='Inter'
-        >
-          {/* {siteConfig.tagline} */}
-					Get your funny up, bozo.
-        </Typography>
-
-        <Typography
-          component='h2'
-          color='#fff'
-          fontSize='16px'
-          fontWeight={300}
-          fontFamily='Inter'
-        >
-          {/* {siteConfig.tagline} */}
-					Serving 69 jokes to 420 users.
-        </Typography>
 
         <Box>
           <Button
             size='large'
             variant='contained'
             onClick={() => navigate("/docs/intro")}
-            // endIcon={<ArrowForward />}
-            sx={{ backgroundColor: "#fff", color: "black" }}
+            sx={{
+              backgroundColor: "#fff",
+              color: "black",
+              fontFamily: "Inter Variable",
+              fontWeight: 500,
+            }}
           >
-            <Typography
-              fontFamily='Inter'
-              fontWeight={800}
-            >
-							Get started
-            </Typography>
+            Get Started
           </Button>
+
+          <Typography
+            mt={2}
+            component='h2'
+            color='#fff'
+            fontSize='14px'
+            fontWeight={500}
+            fontFamily='Inter Variable'
+          >
+            {/* {siteConfig.tagline} */}
+            Serving 69 jokes to 420 users.
+          </Typography>
         </Box>
       </Stack>
     </Box>
