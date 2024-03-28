@@ -9,6 +9,9 @@ import "@fontsource-variable/inter";
 import "@fontsource/roboto";
 
 // Supports weights 100-900
+import "@fontsource-variable/roboto-condensed";
+
+// Supports weights 100-900
 import "@fontsource-variable/outfit";
 
 import "@fontsource/poppins";

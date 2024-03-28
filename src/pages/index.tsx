@@ -16,16 +16,15 @@ function HomepageHeader() {
       component='header'
       bgcolor='primary.main'
       p={{ xs: "2.5em", lg: "4em" }}
-      py='5rem'
+      py={{ md: "6.6em", lg: "4em" }}
     >
       <Stack
         flexDirection='column'
         className='container'
         width='100%'
         textAlign='center'
-        gap={6}
       >
-        <Stack gap={3}>
+        <Stack gap={4}>
           <Stack
             flexDirection='row'
             justifyContent='center'
@@ -33,7 +32,7 @@ function HomepageHeader() {
             <Box
               component='img'
               src='./img/JAPI3_temp_128.png'
-              width='80px'
+              width={{ xs: "65px", md: "80px", lg: "80px" }}
               alt='Logo'
             />
 
@@ -44,11 +43,10 @@ function HomepageHeader() {
               ml={"10px"}
               fontFamily='Outfit Variable'
               fontSize={{
-                xs: "50px",
-                sm: "55px",
+                xs: "40px",
+                sm: "3rem",
                 md: "60px",
-                lg: "65px",
-                xl: "65px",
+                lg: "60px",
               }}
               fontWeight='bold'
             >
@@ -59,21 +57,32 @@ function HomepageHeader() {
           <Typography
             component='h2'
             color='#fff'
-            fontSize={{
-              xs: "25px",
-              sm: "25px",
-              md: "27px",
-              lg: "30px",
-              xl: "33px",
-            }}
-            fontFamily='"Staatliches", system-ui'
+            fontSize={{ xs: "18px", sm: "20px", md: "24px", lg: "24px" }}
+            fontFamily="'Roboto Condensed Variable', sans-serif"
+            fontWeight='400'
           >
             {/* {siteConfig.tagline} */}
-            Get your funny up, bozo!
+            Uniformly funny. Perfectly formatted. JokeAPI delivers.
+          </Typography>
+
+          <Typography
+            component='h2'
+            color='#fff'
+            fontSize={{ xs: "18px", sm: "20pz", md: "21px" }}
+            maxWidth={{ md: "60%" }}
+            fontFamily='"Inter Variable", system-ui'
+            fontWeight='300'
+            mx='auto'
+          >
+            {/* {siteConfig.tagline} */}
+            Integrate laughter into your app with our powerful joke API.
           </Typography>
         </Stack>
 
-        <Box>
+        <Box
+          className='cta-button'
+          mt='15px'
+        >
           <Button
             size='large'
             variant='contained'
@@ -87,18 +96,6 @@ function HomepageHeader() {
           >
             Get Started
           </Button>
-
-          <Typography
-            mt={2}
-            component='h2'
-            color='#fff'
-            fontSize='14px'
-            fontWeight={500}
-            fontFamily='Inter Variable'
-          >
-            {/* {siteConfig.tagline} */}
-            Serving 69 jokes to 420 users.
-          </Typography>
         </Box>
       </Stack>
     </Box>

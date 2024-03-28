@@ -36,6 +36,12 @@ const featureList = [
     ),
   },
   {
+    title: "We have a large userbase of 420 users",
+    svgPath: "/img/undraw_docusaurus_react.svg",
+    description:
+      "With over 420 users strong, our API lets you tap into a vast wellspring of humor.  Integrate laughter into your projects and applications – the possibilities are endless!",
+  },
+  {
     title: "Community",
     svgPath: "/img/undraw_docusaurus_react.svg",
     description: (
@@ -73,7 +79,7 @@ function Feature({ title, svgPath, description, index }: FeatureProps) {
       <Box
         component='img'
         src={svgPath}
-        width={{ xs: "678px", lg: "36vw" }}
+        width={{ xs: "85vw", lg: "36vw" }}
         height='max-content'
         mx={{ xs: "auto", lg: "unset" }}
       />
