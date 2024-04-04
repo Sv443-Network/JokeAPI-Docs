@@ -58,8 +58,8 @@ function HomepageHeader() {
             component='h2'
             color='#fff'
             fontSize={{ xs: "18px", sm: "20px", md: "24px", lg: "24px" }}
-            fontFamily="'Roboto Condensed Variable', sans-serif"
-            fontWeight='400'
+            fontFamily='Inter Variable'
+            fontWeight={700}
           >
             {/* {siteConfig.tagline} */}
             Uniformly funny. Perfectly formatted. JokeAPI delivers.

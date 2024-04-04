@@ -1,5 +1,7 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import PricingOption, { PricingOptionData } from "@site/src/components/Pricing/PricingOption";
+import PricingOption, {
+  PricingOptionData,
+} from "@site/src/components/Pricing/PricingOption";
 import Layout from "@site/src/components/Layout";
 import { Grid, useTheme } from "@mui/material";
 import { ArrowForward, ArrowOutward } from "@mui/icons-material";
@@ -26,7 +28,8 @@ const pricingOptions: PricingOptionData[] = [
   },
   {
     title: "Free (Sign up)",
-    description: "For small projects on a tight (or nonexistent) budget or evaluation",
+    description:
+      "For small projects on a tight (or nonexistent) budget or evaluation",
     price: "Free!",
     features: [
       "10 requests per minute",
@@ -69,19 +72,22 @@ export default function PricingHome() {
 
   return (
     <Layout
-      title="Pricing"
-      description={siteConfig.tagline}>
-      <div style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-      }}>
+      title='Pricing'
+      description={siteConfig.tagline}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         {/* Wrap on mobile devices */}
         <Grid
           container
-          direction="row"
-          justifyContent="space-between"
+          direction='row'
+          justifyContent='space-between'
           gap={8}
           sx={{
             flexWrap: "nowrap",
@@ -91,16 +97,21 @@ export default function PricingHome() {
             marginTop: 10,
             marginBottom: 6,
             width: "auto",
-          }}>
+          }}
+        >
           {pricingOptions.map((option) => (
-            <Grid item xs={6} key={`pricingopt-${option.title}`}>
+            <Grid
+              item
+              xs={6}
+              key={`pricingopt-${option.title}`}
+            >
               <PricingOption
                 {...{
                   ...option,
                   width: "100%",
                 }}
               />
-              {JSON.stringify(option)}
+              {/* {JSON.stringify(option)} */}
             </Grid>
           ))}
         </Grid>
