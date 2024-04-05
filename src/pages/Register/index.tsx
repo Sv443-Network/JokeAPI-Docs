@@ -24,23 +24,21 @@ export default function Register() {
       <Box
         minHeight='75vh'
         gap='10vh'
-        width={{ xs: "90vw", sm: "85vw", md: "60vw" }}
         mx='auto'
-        my={{ xs: "2.5vh", sm: "5vh" }}
       >
         <Stack
           component={Paper}
           m='auto'
-          my={{ lg: "15vh" }}
+          my={{ xs: "2.5vh", sm: "5vh", lg: "15vh" }}
           p='35px'
           justifyContent='center'
           borderRadius='25px'
           gap={3}
-          width={{ lg: "550px" }}
+          width={{ xs: "90vw", sm: "85vw", md: "60vw" }}
         >
           <Stack
             id='first-section-container'
-            flexDirection='row'
+            flexDirection={{ xs: "column-reverse", sm: "row" }}
             gap={{ xs: "2em", sm: "3em" }}
             height='100%'
           >
@@ -50,7 +48,7 @@ export default function Register() {
               gap={{ xs: "1.5em" }}
             >
               <Stack
-                gap={{ xs: "10px", sm: "10px", md: "1rem" }}
+                gap={{ xs: "5px", sm: "10px", md: "1rem" }}
                 mb='auto'
               >
                 <Typography fontSize='14px'>Username</Typography>
@@ -61,14 +59,14 @@ export default function Register() {
                     variant='outlined'
                     size='small'
                     sx={{
-                      width: "235px",
+                      width: { xs: "100%", sm: "235px" },
                       fontSize: "14px",
                     }}
                   />
                 </FormGroup>
               </Stack>
 
-              <Stack gap={{ xs: "10px", sm: "10px", md: "1rem" }}>
+              <Stack gap={{ xs: "5px", sm: "10px", md: "1rem" }}>
                 <Typography
                   fontSize='14px'
                   fontWeight={500}
@@ -81,7 +79,7 @@ export default function Register() {
                     variant='outlined'
                     size='small'
                     sx={{
-                      width: "235px",
+                      width: { xs: "100%", sm: "235px" },
                       fontSize: "14px",
                     }}
                   />
@@ -174,6 +172,7 @@ export default function Register() {
             flexDirection='row'
             justifyContent='right'
             gap={2}
+            mt='1em'
           >
             <Box>
               <Button
