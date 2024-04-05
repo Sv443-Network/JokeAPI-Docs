@@ -1,6 +1,8 @@
 import { AspectRatio } from "@mui/icons-material";
 import {
   Box,
+  Button,
+  ButtonGroup,
   Checkbox,
   Divider,
   FormControlLabel,
@@ -22,6 +24,9 @@ export default function Register() {
       <Box
         minHeight='75vh'
         gap='10vh'
+        width={{ xs: "90vw", sm: "85vw", md: "60vw" }}
+        mx='auto'
+        my={{ xs: "2.5vh", sm: "5vh" }}
       >
         <Stack
           component={Paper}
@@ -35,15 +40,19 @@ export default function Register() {
         >
           <Stack
             id='first-section-container'
-            flexDirection={{ md: "row", lg: "row" }}
-            gap={{ sm: "3em" }}
+            flexDirection='row'
+            gap={{ xs: "2em", sm: "3em" }}
             height='100%'
           >
             <Stack
               id='text-input-container'
-              gap={4}
+              py='10px'
+              gap={{ xs: "1.5em" }}
             >
-              <Stack gap={"5px"}>
+              <Stack
+                gap={{ xs: "10px", sm: "10px", md: "1rem" }}
+                mb='auto'
+              >
                 <Typography fontSize='14px'>Username</Typography>
 
                 <FormGroup>
@@ -51,11 +60,15 @@ export default function Register() {
                     required
                     variant='outlined'
                     size='small'
+                    sx={{
+                      width: "235px",
+                      fontSize: "14px",
+                    }}
                   />
                 </FormGroup>
               </Stack>
 
-              <Stack gap={1}>
+              <Stack gap={{ xs: "10px", sm: "10px", md: "1rem" }}>
                 <Typography
                   fontSize='14px'
                   fontWeight={500}
@@ -67,7 +80,10 @@ export default function Register() {
                   <TextField
                     variant='outlined'
                     size='small'
-                    sx={{ width: "235px", fontSize: "14px" }}
+                    sx={{
+                      width: "235px",
+                      fontSize: "14px",
+                    }}
                   />
                 </FormGroup>
               </Stack>
@@ -80,9 +96,10 @@ export default function Register() {
               alt='Profile Picture'
               src='/img/man.png'
               borderRadius='25px'
-              width={{ sm: "200px" }}
-              height={{ sm: "auto" }}
-              sx={{ objectFit: "cover" }}
+              width={{ xs: "200px", sm: "200px" }}
+              height={"200px"}
+              mx='auto'
+              sx={{ objectFit: "cover", objectPosition: "10% top" }}
             />
           </Stack>
 
@@ -139,13 +156,7 @@ export default function Register() {
 
               <FormControlLabel
                 required
-                sx={{ alignContent: "center" }}
-                control={
-                  <Checkbox
-                    size='small'
-                    sx={{ mb: "auto" }}
-                  />
-                }
+                control={<Checkbox size='small' />}
                 label={
                   <Typography
                     display='inline'
@@ -158,6 +169,25 @@ export default function Register() {
               />
             </FormGroup>
           </Box>
+
+          <Stack
+            flexDirection='row'
+            justifyContent='right'
+            gap={2}
+          >
+            <Box>
+              <Button
+                size='large'
+                variant='outlined'
+              >
+                Cancel
+              </Button>
+            </Box>
+
+            <Box>
+              <Button size='large'>Register</Button>
+            </Box>
+          </Stack>
         </Stack>
       </Box>
     </Layout>
