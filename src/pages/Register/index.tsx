@@ -15,9 +15,30 @@ import {
 } from "@mui/material";
 import Layout from "@site/src/components/Layout";
 import Link from "@docusaurus/Link";
+import { useEffect, useState } from "react";
+import { useUserStore } from "../../store";
+
+interface FormData {
+  avatarUrl: string;
+  username: string;
+  email: string;
+  privacyAgreement: boolean;
+  cookiesAgreement: boolean;
+}
 
 export default function Register() {
-  const oauth_name = "Jared";
+  const [formData, setFormData] = useState({
+    avatarUrl: "",
+    username: "",
+    email: "",
+    privacyAgreement: false,
+    cookiesAgreement: false,
+  });
+
+  const useRegister = () =>
+    useUserStore((state) => state.setUser({ ...formData }));
+
+  useEffect(() => console.log(formData), [formData]);
 
   return (
     <Layout>
@@ -62,6 +83,12 @@ export default function Register() {
                       width: { xs: "100%", sm: "235px" },
                       fontSize: "14px",
                     }}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        username: e.currentTarget.value,
+                      })
+                    }
                   />
                 </FormGroup>
               </Stack>
@@ -82,6 +109,12 @@ export default function Register() {
                       width: { xs: "100%", sm: "235px" },
                       fontSize: "14px",
                     }}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        email: e.currentTarget.value,
+                      })
+                    }
                   />
                 </FormGroup>
               </Stack>
@@ -110,7 +143,7 @@ export default function Register() {
                     fontSize='14px'
                     display='inline'
                   >
-                    Use {oauth_name}&apos;s email
+                    Use email
                   </Typography>
                 }
               />
@@ -122,7 +155,7 @@ export default function Register() {
                     display='inline'
                     fontSize='14px'
                   >
-                    Use {oauth_name}&apos;s profile picture
+                    Use profile picture
                   </Typography>
                 }
               />
@@ -134,6 +167,13 @@ export default function Register() {
           <Box>
             <FormGroup sx={{ position: "relative" }}>
               <FormControlLabel
+                checked={formData.privacyAgreement}
+                onChange={() =>
+                  setFormData({
+                    ...formData,
+                    privacyAgreement: !formData.privacyAgreement,
+                  })
+                }
                 control={
                   <Checkbox
                     size='small'
@@ -155,6 +195,13 @@ export default function Register() {
               <FormControlLabel
                 required
                 control={<Checkbox size='small' />}
+                checked={formData.cookiesAgreement}
+                onChange={() =>
+                  setFormData({
+                    ...formData,
+                    cookiesAgreement: !formData.cookiesAgreement,
+                  })
+                }
                 label={
                   <Typography
                     display='inline'
@@ -184,7 +231,12 @@ export default function Register() {
             </Box>
 
             <Box>
-              <Button size='large'>Register</Button>
+              <Button
+                size='large'
+                onClick={() => useRegister}
+              >
+                Register
+              </Button>
             </Box>
           </Stack>
         </Stack>
