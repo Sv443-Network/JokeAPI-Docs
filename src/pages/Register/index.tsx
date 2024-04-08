@@ -78,8 +78,6 @@ export default function Register() {
           width={{
             xs: "90vw",
             sm: "575px",
-            md: "60vw",
-            lg: "50vw",
           }}
         >
           <Typography fontSize='27px'>Create a JokeAPI account</Typography>
@@ -93,6 +91,7 @@ export default function Register() {
             <Stack
               id='text-input-container'
               gap={{ xs: "1.5em" }}
+              mr='auto'
             >
               <Stack
                 gap={1}
