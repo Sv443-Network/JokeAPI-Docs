@@ -24,7 +24,9 @@ export interface AuthStore {
 }
 
 export const useUserStore = create<UserStore>((set, _get) => ({
-  setUser: (user: Parameters<UserStore["setUser"]>[0]) => set({ ...user }),
+  setUser: (user: Parameters<UserStore["setUser"]>[0]) => {
+    set({ ...user });
+  },
 }));
 
 export const useAuthStore = create(

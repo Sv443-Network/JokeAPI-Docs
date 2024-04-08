@@ -1,13 +1,14 @@
-import { AspectRatio } from "@mui/icons-material";
 import {
   Box,
   Button,
-  ButtonGroup,
+  ButtonBase,
   Checkbox,
   Divider,
+  FormControl,
   FormControlLabel,
   FormGroup,
-  Modal,
+  InputAdornment,
+  InputLabel,
   Paper,
   Stack,
   TextField,
@@ -17,6 +18,8 @@ import Layout from "@site/src/components/Layout";
 import Link from "@docusaurus/Link";
 import { useEffect, useState } from "react";
 import { useUserStore } from "../../store";
+import EmailInputForm from "./EmailInputForm";
+import { AccountCircle, Email, PhotoLibrary } from "@mui/icons-material";
 
 interface FormData {
   avatarUrl: string;
@@ -33,6 +36,11 @@ export default function Register() {
     email: "",
     privacyAgreement: false,
     cookiesAgreement: false,
+  });
+
+  const [selection, setSelection] = useState({
+    usernameSelected: true,
+    emailSelected: false,
   });
 
   const useRegister = () =>
@@ -55,83 +63,141 @@ export default function Register() {
           justifyContent='center'
           borderRadius='25px'
           gap={3}
-          width={{ xs: "90vw", sm: "85vw", md: "60vw" }}
+          width={{ xs: "90vw", sm: "575px", md: "60vw" }}
         >
+          <Typography fontSize='27px'>Create a JokeAPI account</Typography>
           <Stack
             id='first-section-container'
             flexDirection={{ xs: "column-reverse", sm: "row" }}
-            gap={{ xs: "2em", sm: "3em" }}
+            gap={{ xs: "2em", sm: "3vw" }}
             height='100%'
+            py='15px'
           >
             <Stack
               id='text-input-container'
-              py='10px'
               gap={{ xs: "1.5em" }}
             >
               <Stack
-                gap={{ xs: "5px", sm: "10px", md: "1rem" }}
-                mb='auto'
+                gap={1}
+                id='username-input'
               >
-                <Typography fontSize='14px'>Username</Typography>
+                <Typography
+                  color={
+                    selection.usernameSelected ? "#673ab7" : "text.default"
+                  }
+                  sx={{ transition: ".3s" }}
+                >
+                  Username
+                </Typography>
 
-                <FormGroup>
-                  <TextField
-                    required
-                    variant='outlined'
-                    size='small'
-                    sx={{
-                      width: { xs: "100%", sm: "235px" },
-                      fontSize: "14px",
-                    }}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        username: e.currentTarget.value,
-                      })
-                    }
-                  />
-                </FormGroup>
+                <TextField
+                  id='input-with-icon-textfield'
+                  helperText={
+                    <Box mt={0.5}>
+                      Set up a username for the JokeAPI platform
+                    </Box>
+                  }
+                  variant='standard'
+                  fullWidth={true}
+                  autoFocus={true}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position='start'>
+                        <AccountCircle
+                          sx={{
+                            width: 27,
+                            height: 27,
+                            marginBottom: 0.5,
+                          }}
+                        />
+                      </InputAdornment>
+                    ),
+                    style: { fontSize: 14 },
+                  }}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      username: e.currentTarget.value,
+                    })
+                  }
+                  onFocus={() =>
+                    setSelection({ ...selection, usernameSelected: true })
+                  }
+                  onBlur={() =>
+                    setSelection({ ...selection, usernameSelected: false })
+                  }
+                  sx={{ marginBottom: { sm: "auto" } }}
+                />
               </Stack>
 
-              <Stack gap={{ xs: "5px", sm: "10px", md: "1rem" }}>
+              <Stack
+                id='email-input'
+                gap={1}
+              >
                 <Typography
-                  fontSize='14px'
-                  fontWeight={500}
+                  color={selection.emailSelected ? "#673ab7" : "text.default"}
+                  sx={{ transition: ".3s" }}
                 >
                   Email
                 </Typography>
 
-                <FormGroup sx={{ position: "relative" }}>
-                  <TextField
-                    variant='outlined'
-                    size='small'
-                    sx={{
-                      width: { xs: "100%", sm: "235px" },
-                      fontSize: "14px",
-                    }}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        email: e.currentTarget.value,
-                      })
-                    }
-                  />
-                </FormGroup>
+                <TextField
+                  id='input-with-icon-textfield'
+                  variant='standard'
+                  fullWidth={true}
+                  helperText={
+                    <Box mt={0.5}>For communication and account recovery</Box>
+                  }
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position='start'>
+                        <Email
+                          sx={{
+                            width: 27,
+                            height: 27,
+                            marginBottom: 0.5,
+                          }}
+                        />
+                      </InputAdornment>
+                    ),
+                    style: { fontSize: 14 },
+                  }}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      email: e.currentTarget.value,
+                    })
+                  }
+                  onFocus={() =>
+                    setSelection({ ...selection, emailSelected: true })
+                  }
+                  onBlur={() =>
+                    setSelection({ ...selection, emailSelected: false })
+                  }
+                />
               </Stack>
             </Stack>
 
-            <Box
-              mb='unset'
-              id='profile-picture'
-              component='img'
-              alt='Profile Picture'
-              src='/img/man.png'
+            <Button
+              id='profile-picture-input'
               borderRadius='25px'
-              width={{ xs: "200px", sm: "200px" }}
-              height={"200px"}
-              mx='auto'
-              sx={{ objectFit: "cover", objectPosition: "10% top" }}
-            />
+            >
+              <Box
+                mb='unset'
+                id='profile-picture'
+                component='img'
+                alt='Profile Picture'
+                src='/img/default-pfp.png'
+                borderRadius='25px'
+                width={{ xs: "200px", sm: "200px" }}
+                height={"200px"}
+                mx='auto'
+                sx={{
+                  objectFit: "cover",
+                  objectPosition: "10% top",
+                }}
+              />
+            </Button>
           </Stack>
 
           <Box width='100%'>
@@ -218,7 +284,7 @@ export default function Register() {
           <Stack
             flexDirection='row'
             justifyContent='right'
-            gap={2}
+            gap={3}
             mt='1em'
           >
             <Box>

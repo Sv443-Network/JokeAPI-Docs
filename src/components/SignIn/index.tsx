@@ -87,13 +87,13 @@ export default function SignIn({ ...rest }: SignInProps) {
               height: 40,
               ...(username
                 ? {
-                    paddingLeft: 4,
-                    paddingRight: 10,
-                  }
+                  paddingLeft: 4,
+                  paddingRight: 10,
+                }
                 : {
-                    paddingLeft: 14,
-                    paddingRight: 10,
-                  }),
+                  paddingLeft: 14,
+                  paddingRight: 10,
+                }),
             }}
           >
             {username ? (

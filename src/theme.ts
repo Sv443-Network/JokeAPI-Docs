@@ -9,27 +9,27 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
     palette: {
       ...(darkMode
         ? {
-            mode: "dark",
-            background: { default: "#1b1b1d" },
-            text: {
-              primary: "#fff",
-              secondary: "#e3e3e3",
-            },
-            primary: { main: "#673AB7" },
-            secondary: { main: "#FFC107" },
-            error: { main: "#cf6679" },
-            contrastText: "#000",
-          }
+          mode: "dark",
+          background: { default: "#1b1b1d" },
+          text: {
+            primary: "#fff",
+            secondary: "#e3e3e3",
+          },
+          primary: { main: "#673AB7" },
+          secondary: { main: "#FFC107" },
+          error: { main: "#cf6679" },
+          contrastText: "#000",
+        }
         : {
-            mode: "light",
-            background: { default: "#fff" },
-            text: { primary: "#000", secondary: "#333" },
-            primary: { main: "#673AB7" },
-            secondary: { main: "#FFC107" },
-            error: { main: "#cf6679" },
-            contrastText: "#fff",
-            secondaryBackground: "#F0F0F0",
-          }),
+          mode: "light",
+          background: { default: "#fff" },
+          text: { primary: "#000", secondary: "#333" },
+          primary: { main: "#673AB7" },
+          secondary: { main: "#FFC107" },
+          error: { main: "#cf6679" },
+          contrastText: "#fff",
+          secondaryBackground: "#F0F0F0",
+        }),
     },
     components: {
       MuiButton: {
@@ -54,6 +54,6 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
       },
     },
     typography: {
-      fontFamily: '"Inter", "Roboto", "serif"',
+      fontFamily: "\"Inter\", \"Roboto\", \"serif\"",
     },
   });
