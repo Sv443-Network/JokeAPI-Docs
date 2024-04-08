@@ -20,6 +20,7 @@ import { useEffect, useState } from "react";
 import { useUserStore } from "../../store";
 import EmailInputForm from "./EmailInputForm";
 import { AccountCircle, Email, PhotoLibrary } from "@mui/icons-material";
+import styled from "@emotion/styled";
 
 interface FormData {
   avatarUrl: string;
@@ -28,6 +29,18 @@ interface FormData {
   privacyAgreement: boolean;
   cookiesAgreement: boolean;
 }
+
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+});
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -180,6 +193,7 @@ export default function Register() {
 
             <Button
               id='profile-picture-input'
+              component='label'
               borderRadius='25px'
             >
               <Box
@@ -197,6 +211,8 @@ export default function Register() {
                   objectPosition: "10% top",
                 }}
               />
+
+              <VisuallyHiddenInput />
             </Button>
           </Stack>
 
