@@ -1,24 +1,21 @@
 import {
   Box,
   Button,
-  ButtonBase,
   Checkbox,
   Divider,
-  FormControl,
   FormControlLabel,
   FormGroup,
   InputAdornment,
-  InputLabel,
   Paper,
   Stack,
   TextField,
   Typography,
+  getAvatarGroupUtilityClass,
 } from "@mui/material";
 import Layout from "@site/src/components/Layout";
 import Link from "@docusaurus/Link";
 import { useEffect, useState } from "react";
 import { useUserStore } from "../../store";
-import EmailInputForm from "./EmailInputForm";
 import { AccountCircle, Email, PhotoLibrary } from "@mui/icons-material";
 import styled from "@emotion/styled";
 
@@ -44,7 +41,7 @@ const VisuallyHiddenInput = styled("input")({
 
 export default function Register() {
   const [formData, setFormData] = useState({
-    avatarUrl: "",
+    avatarUrl: "/img/default-pfp.png",
     username: "",
     email: "",
     privacyAgreement: false,
@@ -55,6 +52,8 @@ export default function Register() {
     usernameSelected: true,
     emailSelected: false,
   });
+
+  const [isPhotoHovered, setPhotoHovered] = useState(false);
 
   const useRegister = () =>
     useUserStore((state) => state.setUser({ ...formData }));
@@ -71,12 +70,17 @@ export default function Register() {
         <Stack
           component={Paper}
           m='auto'
-          my={{ xs: "2.5vh", sm: "5vh", lg: "15vh" }}
+          my={{ xs: "2.5vh", sm: "5vh", lg: "7vh" }}
           p='35px'
           justifyContent='center'
           borderRadius='25px'
           gap={3}
-          width={{ xs: "90vw", sm: "575px", md: "60vw" }}
+          width={{
+            xs: "90vw",
+            sm: "575px",
+            md: "60vw",
+            lg: "50vw",
+          }}
         >
           <Typography fontSize='27px'>Create a JokeAPI account</Typography>
           <Stack
@@ -192,32 +196,70 @@ export default function Register() {
             </Stack>
 
             <Button
-              id='profile-picture-input'
               component='label'
-              borderRadius='25px'
+              color='blacke'
+              role={undefined}
+              variant='contained'
+              tabIndex={-1}
+              sx={{
+                width: "max-content",
+                padding: 0,
+                borderRadius: "28px",
+                mx: { xs: "auto", sm: "0" },
+              }}
+              onMouseEnter={() => {
+                setPhotoHovered(true);
+              }}
+              onMouseLeave={() => setPhotoHovered(false)}
             >
               <Box
-                mb='unset'
-                id='profile-picture'
                 component='img'
-                alt='Profile Picture'
-                src='/img/default-pfp.png'
                 borderRadius='25px'
-                width={{ xs: "200px", sm: "200px" }}
-                height={"200px"}
                 mx='auto'
+                id='profile-picture'
+                alt='Profile Picture'
+                src={formData.avatarUrl}
+                height={"200px"}
+                width={"200px"}
                 sx={{
                   objectFit: "cover",
                   objectPosition: "10% top",
+                  transition: ".2s",
+                  opacity: isPhotoHovered ? 0.5 : 1,
                 }}
               />
 
-              <VisuallyHiddenInput />
+              <PhotoLibrary
+                sx={{
+                  position: "absolute",
+                  width: 50,
+                  height: 50,
+                  opacity: isPhotoHovered ? 1 : 0,
+                  transition: ".2s",
+                  color: "white",
+                }}
+              />
+
+              <VisuallyHiddenInput
+                type='file'
+                accept='image/png, image/jpeg'
+                onChange={(e) => {
+                  const newPicture = e.currentTarget?.files?.[0];
+
+                  if (newPicture) {
+                    setFormData({
+                      ...formData,
+                      avatarUrl: URL.createObjectURL(newPicture),
+                    });
+                  }
+                  console.log("reirog");
+                }}
+              />
             </Button>
           </Stack>
 
           <Box width='100%'>
-            <FormGroup sx={{ position: "relative" }}>
+            <FormGroup sx={{ position: "relative", maxWidth: "max-content" }}>
               <FormControlLabel
                 control={<Checkbox size='small' />}
                 label={
@@ -256,6 +298,7 @@ export default function Register() {
                     privacyAgreement: !formData.privacyAgreement,
                   })
                 }
+                sx={{ maxWidth: "max-content" }}
                 control={
                   <Checkbox
                     size='small'
@@ -293,6 +336,7 @@ export default function Register() {
                     allow for basic site functionality like login
                   </Typography>
                 }
+                sx={{ maxWidth: "max-content" }}
               />
             </FormGroup>
           </Box>
