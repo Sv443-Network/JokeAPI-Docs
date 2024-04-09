@@ -9,29 +9,29 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
     palette: {
       ...(darkMode
         ? {
-            mode: "dark",
-            background: { default: "#1b1b1d" },
-            text: {
-              primary: "#fff",
-              secondary: "#000",
-            },
-            primary: { main: "#19161d" },
-            secondary: { main: "#FFC107" },
-            error: { main: "#cf6679" },
-            contrastText: "#000",
-            blacke: { main: "#0000" },
-          }
+          mode: "dark",
+          background: { default: "#1b1b1d" },
+          text: {
+            primary: "#fff",
+            secondary: "#000",
+          },
+          primary: { main: "#19161d" },
+          secondary: { main: "#FFC107" },
+          error: { main: "#cf6679" },
+          contrastText: "#000",
+          blacke: { main: "#0000" },
+        }
         : {
-            mode: "light",
-            background: { default: "#fff" },
-            text: { primary: "#000" },
-            primary: { main: "#673AB7" },
-            secondary: { main: "#FFC107" },
-            error: { main: "#cf6679" },
-            contrastText: "#fff",
-            secondaryBackground: "#F0F0F0",
-            blacke: { main: "#000" },
-          }),
+          mode: "light",
+          background: { default: "#fff" },
+          text: { primary: "#000" },
+          primary: { main: "#673AB7" },
+          secondary: { main: "#FFC107" },
+          error: { main: "#cf6679" },
+          contrastText: "#fff",
+          secondaryBackground: "#F0F0F0",
+          blacke: { main: "#000" },
+        }),
     },
     components: {
       MuiButton: {
@@ -56,6 +56,6 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
       },
     },
     typography: {
-      fontFamily: '"Inter", "Roboto", "serif"',
+      fontFamily: "\"Inter\", \"Roboto\", \"serif\"",
     },
   });
