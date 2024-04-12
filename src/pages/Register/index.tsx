@@ -109,9 +109,7 @@ export default function Register() {
                 <TextField
                   id='input-with-icon-textfield'
                   helperText={
-                    <Box mt={0.5}>
-                      Set up a username for the JokeAPI platform
-                    </Box>
+                    "Set up a username for the platform"
                   }
                   variant='standard'
                   fullWidth={true}
@@ -162,7 +160,7 @@ export default function Register() {
                   variant='standard'
                   fullWidth={true}
                   helperText={
-                    <Box mt={0.5}>For communication and account recovery</Box>
+                    "For communication and account recovery"
                   }
                   InputProps={{
                     endAdornment: (
@@ -260,6 +258,7 @@ export default function Register() {
           <Box width='100%'>
             <FormGroup sx={{ position: "relative", maxWidth: "max-content" }}>
               <FormControlLabel
+
                 control={<Checkbox size='small' />}
                 label={
                   <Typography
@@ -318,7 +317,7 @@ export default function Register() {
 
               <FormControlLabel
                 required
-                control={<Checkbox size='small' />}
+                control={<Checkbox size='small' sx={{ marginTop: { md: -.5, lg: "unset"}}}  />}
                 checked={formData.cookiesAgreement}
                 onChange={() =>
                   setFormData({
@@ -335,7 +334,7 @@ export default function Register() {
                     allow for basic site functionality like login
                   </Typography>
                 }
-                sx={{ maxWidth: "max-content" }}
+                sx={{ maxWidth: "max-content", alignItems: "flex-start" }}
               />
             </FormGroup>
           </Box>

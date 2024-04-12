@@ -59,7 +59,7 @@ function HomepageHeader() {
             color='#fff'
             fontSize={{ xs: "18px", sm: "20px", md: "24px", lg: "24px" }}
             fontFamily='Inter Variable'
-            fontWeight={700}
+            fontWeight={600}
           >
             {/* {siteConfig.tagline} */}
             Uniformly funny. Perfectly formatted. JokeAPI delivers.
