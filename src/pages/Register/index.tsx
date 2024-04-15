@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 import { useUserStore } from "../../store";
 import { AccountCircle, Email, PhotoLibrary } from "@mui/icons-material";
 import styled from "@emotion/styled";
+import EmailInputForm from './EmailInputForm'
 
 interface FormData {
   avatarUrl: string;
@@ -364,6 +365,7 @@ export default function Register() {
             </Box>
           </Stack>
         </Stack>
+                <EmailInputForm />
       </Box>
     </Layout>
   );

@@ -1,12 +1,14 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import PricingOption, {
-  PricingOptionData,
-} from "@site/src/components/Pricing/PricingOption";
+import PricingCard, {
+  PricingCardData,
+} from "@site/src/components/Pricing/PricingCard";
 import Layout from "@site/src/components/Layout";
-import { Grid, useTheme } from "@mui/material";
+import { Box, Grid, Stack, useTheme } from "@mui/material";
 import { ArrowForward, ArrowOutward } from "@mui/icons-material";
+import Paper from "@mui/material/Paper";
+import { useId } from "react";
 
-const pricingOptions: PricingOptionData[] = [
+const pricingData: PricingCardData[] = [
   {
     title: "Free (Public)",
     description: "For the smallest of projects or testing",
@@ -48,7 +50,7 @@ const pricingOptions: PricingOptionData[] = [
   {
     title: "Professional",
     description: "For larger projects and teams",
-    price: "$6 / mo",
+    price: "$6",
     features: [
       "200 requests per minute",
       "50,000 requests per day",
@@ -70,52 +72,23 @@ export default function PricingHome() {
   const { siteConfig } = useDocusaurusContext();
   const { breakpoints } = useTheme();
 
+  
+
   return (
     <Layout
       title='Pricing'
       description={siteConfig.tagline}
     >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {/* Wrap on mobile devices */}
-        <Grid
-          container
-          direction='row'
-          justifyContent='space-between'
-          gap={8}
-          sx={{
-            flexWrap: "nowrap",
-            [breakpoints.down("sm")]: {
-              flexWrap: "wrap !important",
-            },
-            marginTop: 10,
-            marginBottom: 6,
-            width: "auto",
-          }}
-        >
-          {pricingOptions.map((option) => (
-            <Grid
-              item
-              xs={6}
-              key={`pricingopt-${option.title}`}
-            >
-              <PricingOption
-                {...{
-                  ...option,
-                  width: "100%",
-                }}
-              />
-              {/* {JSON.stringify(option)} */}
-            </Grid>
-          ))}
-        </Grid>
-      </div>
+      <Box padding='5vw' width='100%' justifyContent='center' display='flex'>
+        <Stack justifyContent='center' flexDirection={{ md: "column", lg: "row"}} gap={{ xs: 4, md: 4, lg: "2vw", xl: "2vw"}}>
+          {pricingData.map(({title, description, price, features, button, backgroundColor}: PricingCardData) => 
+            <Box key={title} width='375px'>
+              <PricingCard  title={title} description={description} backgroundColor={backgroundColor} price={price} features={features} button={button}/>
+            </Box>
+            
+          )}
+        </Stack>
+      </Box>
     </Layout>
   );
 }
