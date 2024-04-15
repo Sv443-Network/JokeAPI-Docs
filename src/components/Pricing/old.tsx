@@ -2,7 +2,7 @@ import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import { navigate } from "@site/src/utils";
 import { ComponentProps, ReactNode, useMemo } from "react";
 
-export type PricingOptionData = {
+export type PricingCardData = {
   title: string;
   description: string;
   price: string;
@@ -16,13 +16,13 @@ export type PricingOptionData = {
   backgroundColor?: `#${string}`;
 };
 
-type PricingOptionProps = PricingOptionData & {
+type PricingCardProps = PricingCardData & {
   width?: number | string;
   backgroundColor?: `#${string}`;
   fontColor?: `#${string}`;
 };
 
-export default function PricingOption({
+export default function PricingCard({
   title,
   description,
   price,
@@ -31,24 +31,31 @@ export default function PricingOption({
   width = 400,
   backgroundColor = "#34c",
   fontColor,
-}: PricingOptionProps) {
+}: PricingCardProps) {
   const fontColorCalc = useMemo(() => {
     if (fontColor) return fontColor;
+
     const bgCol = backgroundColor?.slice(1);
+
     const bgColParts = bgCol.match(/.{6}/)
       ? bgCol.match(/.{2}/g)
       : bgCol.match(/./g);
     if (!bgColParts) return "#fff";
+
     const bgColPartsNum = bgColParts.map((part) => parseInt(part, 16));
+
     const [red, green, blue] = bgColPartsNum as [number, number, number];
     const contrast = red * 0.299 + green * 0.587 + blue * 0.114;
+
     if (contrast > 186 && !isNaN(contrast)) return "#000";
+
     return "#fff";
   }, [backgroundColor, fontColor]);
 
   return (
     <Paper
       elevation={3}
+      
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -56,11 +63,13 @@ export default function PricingOption({
         alignItems: "center",
         width,
         height: "100%",
+        borderRadius: "25px"
       }}
     >
       <Box
         style={{
           width: "100%",
+          
         }}
       >
         <Paper
@@ -73,8 +82,8 @@ export default function PricingOption({
             paddingTop: 16,
             paddingBottom: 16,
             backgroundColor,
-            borderBottomLeftRadius: 0,
-            borderBottomRightRadius: 0,
+            borderTopLeftRadius: "16px",
+            borderTopRightRadius: "16px"
           }}
         >
           <Typography
@@ -106,6 +115,18 @@ export default function PricingOption({
             <Grid
               item
               xs={4}
+              style={{ marginBottom: 40 }}
+            >
+              <Typography variant='h5'>{price}</Typography>
+            </Grid>
+
+            <Grid xs={12}>
+              <Box component='img' src='/img/bunger.png' width='100%' borderRadius='16px'  />
+            </Grid>
+
+            <Grid
+              item
+              xs={4}
             >
               <Typography
                 variant='body1'
@@ -117,13 +138,7 @@ export default function PricingOption({
                 {description}
               </Typography>
             </Grid>
-            <Grid
-              item
-              xs={4}
-              style={{ marginBottom: 40 }}
-            >
-              <Typography variant='h5'>{price}</Typography>
-            </Grid>
+
             <Grid
               item
               xs={4}

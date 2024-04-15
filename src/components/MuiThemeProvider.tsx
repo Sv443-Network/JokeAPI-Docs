@@ -2,7 +2,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { useColorMode } from "@docusaurus/theme-common";
 import { ComponentProps } from "react";
 import { createTheme } from "../theme";
-import { CssBaseline } from "@mui/material";
+import { Box, CssBaseline } from "@mui/material";
 
 import "@fontsource-variable/inter";
 
@@ -27,7 +27,9 @@ export default function MuiThemeProvider(
   return (
     <ThemeProvider {...{ theme }}>
       <CssBaseline />
+
       {props.children}
+      
     </ThemeProvider>
   );
 }
