@@ -3,10 +3,11 @@ import PricingCard, {
   PricingCardData,
 } from "@site/src/components/Pricing/PricingCard";
 import Layout from "@site/src/components/Layout";
-import { Box, Grid, Stack, useTheme } from "@mui/material";
+import { Box, Grid, Stack, Typography, useTheme } from "@mui/material";
 import { ArrowForward, ArrowOutward } from "@mui/icons-material";
 import Paper from "@mui/material/Paper";
 import { useId } from "react";
+import Container from "@mui/material/Container";
 
 const pricingData: PricingCardData[] = [
   {
@@ -79,16 +80,22 @@ export default function PricingHome() {
       title='Pricing'
       description={siteConfig.tagline}
     >
-      <Box padding='5vw' width='100%' justifyContent='center' display='flex'>
+      <Container maxWidth='lg' sx={{ py: "5vh"}}>
+        <Stack maxWidth={{xs: "95%", md: "30vw"}} textAlign='center' mx='auto' mb={4}>
+          <Typography fontFamily='Outfit Variable' fontWeight={400} fontSize='48px'>Pricing</Typography>
+
+          <Typography fontSize='18px' fontWeight={300}>{"Enjoy a variety of jokes for free with smaller projects. Upgrade for large requests, advanced features, and ad-free documentation."}</Typography>
+        </Stack>
+
         <Stack justifyContent='center' flexDirection={{ md: "column", lg: "row"}} gap={{ xs: 4, md: 4, lg: "2vw", xl: "2vw"}}>
           {pricingData.map(({title, description, price, features, button, backgroundColor}: PricingCardData) => 
-            <Box key={title} width='375px'>
+            <Box key={title} width={{ xs: "95%", md: "360px" }}>
               <PricingCard  title={title} description={description} backgroundColor={backgroundColor} price={price} features={features} button={button}/>
             </Box>
             
           )}
         </Stack>
-      </Box>
+      </Container>
     </Layout>
   );
 }
