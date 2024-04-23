@@ -78,17 +78,19 @@ export default function PricingCard({
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
-            paddingTop: 16,
-            paddingBottom: 16,
+            paddingTop: 12,
+            paddingBottom: 12,
             backgroundColor,
             borderTopLeftRadius: "16px",
-            borderTopRightRadius: "16px"
+            borderTopRightRadius: "16px",
           }}
+          sx={{ backgroundImage: title === "Professional" ? "/img/premium-background.png" : ""}}
         >
           <Typography
             variant='h4'
             color={fontColorCalc}
             bgcolor={backgroundColor}
+            fontWeight={400}
             fontFamily='Inter Variable'
           >
             {title}
@@ -116,13 +118,13 @@ export default function PricingCard({
           >
             <Grid item width='100%%' mx='auto'>
               {/*TODO: Plug in actual pricing images */}
-              <Box component='img' src='/img/bunger.png' borderRadius='16px' width='100%' mx='auto' sx={{ objectFit: "scale-down"}} />
+              <Box component='img' src='/img/bunger.png' borderRadius='16px' width='100%' mx='auto' sx={{ objectFit: "cover"}} />
             </Grid>
 
             <Grid item xs={12} mr='auto' mb={1} mt={1}>
               <Stack flexDirection='row' gap={1}>
                 <Typography
-                  fontWeight={500} 
+                  fontWeight={400} 
                   fontSize='32px' 
                   fontFamily='Inter Variable'
                 >
@@ -140,6 +142,7 @@ export default function PricingCard({
               <Typography
                 variant='body1'
                 fontSize='16px'
+                fontWeight={300}
                 fontFamily='Inter Variable'
               >
                 {description}:
@@ -157,8 +160,8 @@ export default function PricingCard({
               >
                 {features.map((feature, i) => (
                   <ListItem  key={`pricingopt-${title}-feat-${i}`} sx={{ marginRight: "auto", maxHeight: "max-content", maxWidth: "max-content", paddingY: 0 }}>
-                    <ListItemText sx={{ display: "list-item", marginLeft: 1}}>
-                      <Typography variant='body1' fontSize='16px' fontFamily='Inter Variable'>{feature}</Typography>
+                    <ListItemText sx={{ display: "list-item" }}>
+                      <Typography variant='body1' fontSize='16px' fontWeight={300} fontFamily='Inter Variable'>{feature[0].toUpperCase() + feature.slice(1)}</Typography>
                     </ListItemText>
                   </ListItem>
                 ))}
@@ -186,7 +189,7 @@ export default function PricingCard({
             ...(button.variant ? { variant: button.variant } : {}),
           }}
         >
-          <Typography width={"max-content"}>{button.label}</Typography>
+          <Typography width={"max-content"} fontFamily='Inter Variable'>{button.label}</Typography>
           
         </Button>
       </Box>

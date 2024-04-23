@@ -18,6 +18,8 @@ import "@fontsource/poppins";
 
 import "@fontsource/staatliches";
 
+import "@fontsource-variable/open-sans";
+
 export default function MuiThemeProvider(
   props: Omit<ComponentProps<typeof ThemeProvider>, "theme">,
 ) {

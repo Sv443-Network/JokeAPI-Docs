@@ -81,7 +81,7 @@ export default function PricingHome() {
       description={siteConfig.tagline}
     >
       <Container maxWidth='lg' sx={{ py: "5vh"}}>
-        <Stack maxWidth={{xs: "95%", md: "30vw"}} textAlign='center' mx='auto' mb={4}>
+        <Stack maxWidth={{xs: "95%", lg: "30vw"}} textAlign='center' mx='auto' mb={4}>
           <Typography fontFamily='Outfit Variable' fontWeight={400} fontSize='48px'>Pricing</Typography>
 
           <Typography fontSize='18px' fontWeight={300}>{"Enjoy a variety of jokes for free with smaller projects. Upgrade for large requests, advanced features, and ad-free documentation."}</Typography>
@@ -89,7 +89,7 @@ export default function PricingHome() {
 
         <Stack justifyContent='center' flexDirection={{ md: "column", lg: "row"}} gap={{ xs: 4, md: 4, lg: "2vw", xl: "2vw"}}>
           {pricingData.map(({title, description, price, features, button, backgroundColor}: PricingCardData) => 
-            <Box key={title} width={{ xs: "95%", md: "360px" }}>
+            <Box key={title} width={{ xs: "95%", sm: "360px" }} mx={{xs: "auto", sm: "auto", lg: "unset"}}>
               <PricingCard  title={title} description={description} backgroundColor={backgroundColor} price={price} features={features} button={button}/>
             </Box>
             

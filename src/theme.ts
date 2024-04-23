@@ -15,11 +15,11 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
             primary: "#fff",
             secondary: "#000",
           },
-          primary: { main: "#19161d" },
+          primary: { main: "#673AB7" },
           secondary: { main: "#FFC107" },
           error: { main: "#cf6679" },
           contrastText: "#000",
-          blacke: { main: "#0000" },
+          // blacke: createColor("rgba(255, 255, 255, 0.08)")
         }
         : {
           mode: "light",
@@ -30,7 +30,7 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
           error: { main: "#cf6679" },
           contrastText: "#fff",
           secondaryBackground: "#F0F0F0",
-          blacke: { main: "#000" },
+          // blacke: createColor("rgba(255, 255, 255, 0.08)")
         }),
     },
     components: {
@@ -44,6 +44,7 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
             },
           },
           text: { textTransform: "none" },
+        
         },
       },
       MuiInputLabel: {
@@ -56,6 +57,6 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
       },
     },
     typography: {
-      fontFamily: "\"Inter\", \"Roboto\", \"serif\"",
+      fontFamily: "Inter Variable",
     },
   });
