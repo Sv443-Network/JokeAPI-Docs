@@ -6,7 +6,9 @@ export interface UserStore {
   avatarUrl?: string;
   username?: string;
   email?: string;
-  setUser: (user: Pick<UserStore, "avatarUrl" | "username">) => void;
+  emailNotifs?: string,
+  setUser: (user: Pick<UserStore,
+    "avatarUrl"| "email" | "username" | "emailNotifs">) => void;
 }
 
 export interface AuthStore {
@@ -23,11 +25,15 @@ export interface AuthStore {
   ) => void;
 }
 
-export const useUserStore = create<UserStore>((set, _get) => ({
-  setUser: (user: Parameters<UserStore["setUser"]>[0]) => {
-    set({ ...user });
-  },
-}));
+export const useUserStore = create(
+  persist<UserStore>(
+    (set, _get) => ({
+      setUser: (user: Parameters<UserStore["setUser"]>[0]) => set({ ...user }),
+    }),
+    {
+      name: "user"
+    }
+  ));
 
 export const useAuthStore = create(
   persist<AuthStore>(

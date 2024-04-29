@@ -2,6 +2,7 @@ import {
   Button,
   ButtonBase,
   Icon,
+  Link,
   Popover,
   Stack,
   Typography,
@@ -13,7 +14,13 @@ import {
   KeyboardArrowDown,
   KeyboardArrowUp,
 } from "@mui/icons-material";
-import { useCallback, useState, MouseEvent, ComponentProps } from "react";
+import {
+  useCallback,
+  useState,
+  MouseEvent,
+  ComponentProps,
+  useEffect
+} from "react";
 import clsx from "clsx";
 import { useUserStore } from "@site/src/store";
 import type { OAuthProvider } from "@site/src/types";
@@ -26,7 +33,7 @@ type SignInProps = ComponentProps<typeof ButtonBase>;
 const placeholderUrl = "https://picsum.photos/100/100";
 
 export default function SignIn({ ...rest }: SignInProps) {
-  const { username, avatarUrl, setUser } = useUserStore();
+  const { username, email, avatarUrl, setUser } = useUserStore();
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const theme = useTheme();
@@ -48,6 +55,7 @@ export default function SignIn({ ...rest }: SignInProps) {
     return (
       <img
         src={`/img/external/${provider}.svg`}
+        alt='oauth logo'
         style={{ width: "1em", height: "1em" }}
       />
     );
@@ -60,10 +68,23 @@ export default function SignIn({ ...rest }: SignInProps) {
   const devSignIn = useCallback(() => {
     setUser({
       username: "Sv443",
+      email: "balls@sigma.com",
       avatarUrl: "https://github.com/Sv443.png",
     });
+
     closeProfilePopover();
   }, [closeProfilePopover, setUser]);
+
+  const devSignOut = useCallback(() => {
+    setUser({
+      username: "",
+      email: "",
+      avatarUrl: "",
+    });
+
+    closeProfilePopover();
+  }, [closeProfilePopover, setUser]);
+
 
   return (
     <>
@@ -108,6 +129,8 @@ export default function SignIn({ ...rest }: SignInProps) {
                     // backgroundColor: theme.palette.background.paper,
                     border: `1px solid ${theme.palette.primary.main}`,
                     borderRadius: 2,
+                    objectFit: "cover",
+                    objectPosition: "10% top",
                   }}
                 />
                 <Typography
@@ -172,10 +195,11 @@ export default function SignIn({ ...rest }: SignInProps) {
               >
                 Submissions
               </Button>
+
               <Button
                 color='secondary'
                 variant='outlined'
-                onClick={() => alert("TODO: sign out & refresh")}
+                onClick={devSignOut}
                 sx={{ marginTop: 2 }}
               >
                 Sign out

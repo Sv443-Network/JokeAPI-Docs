@@ -19,7 +19,7 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
           secondary: { main: "#FFC107" },
           error: { main: "#cf6679" },
           contrastText: "#000",
-          // blacke: createColor("rgba(255, 255, 255, 0.08)")
+          blacke: "#000"
         }
         : {
           mode: "light",
@@ -30,7 +30,7 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
           error: { main: "#cf6679" },
           contrastText: "#fff",
           secondaryBackground: "#F0F0F0",
-          // blacke: createColor("rgba(255, 255, 255, 0.08)")
+          blacke: "#0000"
         }),
     },
     components: {

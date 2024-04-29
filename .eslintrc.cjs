@@ -34,14 +34,22 @@ module.exports = {
     "@typescript-eslint",
   ],
   rules: {
+    "max-len": ["error", { "code": 80 }],
     "no-unreachable": "off",
     "quotes": [ "error", "double" ],
     "semi": [ "error", "always" ],
     "eol-last": [ "error", "always" ],
     "no-async-promise-executor": "off",
-    "indent": ["error", 2, { "ignoredNodes": ["VariableDeclaration[declarations.length=0]"] }],
+    "indent": ["error", 2, { 
+      "ignoredNodes": [
+        "VariableDeclaration[declarations.length=0]"
+      ]
+    }],
     "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/no-unused-vars": ["warn", { "ignoreRestSiblings": true, "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": ["warn", {
+      "ignoreRestSiblings": true,
+      "argsIgnorePattern": "^_"
+    }],
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/ban-types": ["error", {
       types: {
@@ -69,7 +77,13 @@ module.exports = {
         "semi": [ "error", "always" ],
         "eol-last": [ "error", "always" ],
         "no-async-promise-executor": "off",
-        "indent": ["error", 2, { "ignoredNodes": ["VariableDeclaration[declarations.length=0]"] }],
+        "indent": [
+          "error",
+          2, {
+            "ignoredNodes": [
+              "VariableDeclaration[declarations.length=0]"
+            ]
+          }],
         "comma-dangle": ["error", "only-multiline"],
       },
     },
