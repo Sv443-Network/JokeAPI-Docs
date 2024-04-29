@@ -7,7 +7,7 @@ import Divider from "@mui/material/Divider";
 import {
   Button,
   Checkbox,
-  FormControl, FormControlLabel, Link, TextField, 
+  FormControlLabel, Link, TextField, 
   useTheme}from "@mui/material";
 import VisuallyHiddenInput from "@site/src/components/VisuallyHiddenInput";
 import PhotoLibrary from "@mui/icons-material/PhotoLibrary";
@@ -525,7 +525,8 @@ export default function ProfileSettings() {
 // - One or more word characters at the beginning (username).
 // - Optional periods or hyphens separating word characters in the username.
 // - An "@" symbol.
-// - A domain name consisting of word characters separated by periods or hyphens.
+// - A domain name consisting of word characters separated by
+// periods or hyphens.
 // - A top-level domain (like ".com", ".org", etc.) with 2 or 3 characters.
 
 // Username regex checks for:
@@ -534,6 +535,7 @@ export default function ProfileSettings() {
 // (?!(?:everyone|here)$) - the string cannot be equal to "everyone" or "here"
 // \.? - an optional dot
 // [a-z0-9_]+ - one or more lowercase letters/digits/underscores
-// (?:\.[a-z0-9_]+)* - zero or more sequences of a . and then one or more lowercase letters/digits/underscores
+// (?:\.[a-z0-9_]+)* - zero or more sequences of a . 
+// and then one or more lowercase letters/digits/underscores
 // \.? - an optional dot
 // $ - end of string.
