@@ -10,7 +10,6 @@ import {
   Stack,
   TextField,
   Typography,
-  getAvatarGroupUtilityClass,
 } from "@mui/material";
 import Layout from "@site/src/components/Layout";
 import Link from "@docusaurus/Link";
@@ -316,7 +315,6 @@ export default function Register() {
               />
 
               <FormControlLabel
-                required
                 control={<Checkbox size='small' sx={{ marginTop: { md: -.5, lg: "unset"}}}  />}
                 checked={formData.cookiesAgreement}
                 onChange={() =>

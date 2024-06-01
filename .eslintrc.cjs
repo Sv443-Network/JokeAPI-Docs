@@ -27,7 +27,6 @@ module.exports = {
   },
   plugins: ["react", "react-hooks", "@typescript-eslint"],
   rules: {
-    "max-len": ["warn", { code: 80 }],
     "no-unreachable": "off",
     quotes: ["error", "double"],
     semi: ["error", "always"],

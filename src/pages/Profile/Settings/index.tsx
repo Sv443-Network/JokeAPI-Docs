@@ -1,19 +1,29 @@
 import Stack from "@mui/material/Stack";
-import Layout from "@theme/Layout";
+import Layout from "@site/src/components/Layout";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
-import {
-  Button,
-  Checkbox,
-  FormControlLabel, Link, TextField, 
-  useTheme}from "@mui/material";
-import VisuallyHiddenInput from "@site/src/components/VisuallyHiddenInput";
-import PhotoLibrary from "@mui/icons-material/PhotoLibrary";
-import Modal from "@mui/material/Modal";
-import { useEffect, useState } from "react";
+import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
+import { useState } from "react";
 import { useUserStore } from "@site/src/store";
+import { ConnectedAccounts } from "./ConnectedAccounts";
+
+// TODO: link to the oauth process idk how it works
+export const oauth_providers = {
+  Github: { providerLink: "https://github.com", iconUrl: "/img/github.svg" },
+  Discord: { providerLink: "https://discord.com",
+    iconUrl: "/img/discord.svg" },
+  Google: { providerLink: "https://google.com", iconUrl: "/img/google.svg" }
+};
+
+export type ProfileSettingsActionData = {
+  isAvatarModalOpen: boolean;
+  isEditingUsername: boolean;
+  isEditingEmail: boolean;
+  isPhotoHovered: boolean;
+  avatarUrlInput: string | undefined;
+};
 
 // Go to bottom for regex rules description
 
@@ -24,7 +34,7 @@ export default function ProfileSettings() {
 
   const { email, username, avatarUrl, setUser } = userData;
 
-  const [actionData, setActionData] = useState({
+  const [actionData, setActionData] = useState<ProfileSettingsActionData>({
     isAvatarModalOpen: false,
     isEditingUsername: false,
     isEditingEmail: false,
@@ -44,18 +54,6 @@ export default function ProfileSettings() {
   const usernameRegex = new RegExp(
     "^(?=.{2,32}$).?[a-z0-9_]+(?:.[a-z0-9_]+)*.?$"
   );
-
-  const theme = useTheme();
-
-  // TODO: link to the oauth process idk how it works
-  const oauth_providers = {
-    Github: { providerLink: "https://github.com", iconUrl: "/img/github.svg" },
-    Discord: { providerLink: "https://discord.com",
-      iconUrl: "/img/discord.svg" },
-    Google: { providerLink: "https://google.com", iconUrl: "/img/google.svg" }
-  };
-
-  useEffect(() => console.log(userData), [userData]);
 
   return (
     <Layout>
@@ -77,7 +75,7 @@ export default function ProfileSettings() {
               fontFamily='Inter Variable'
               fontWeight={400}
               fontSize='27px'
-              color='ActiveCaption'
+              color='InfoText'
             >
               Account Settings
             </Typography>
@@ -91,183 +89,15 @@ export default function ProfileSettings() {
             </Typography>
           </Stack>
           
-          <Divider variant='fullWidth' />
+          {/* <Divider variant='fullWidth' />
 
-          <Stack gap={1}>
-            <Typography
-              fontSize='22px'
-              fontWeight={400}
-              fontFamily='Inter Variable'
-            >
-              Profile Picture
-            </Typography>
-
-            <Typography
-              fontSize='16px'
-              fontWeight={300}
-              fontFamily='Inter Variable'
-              color='text.primary'
-            >
-              We only support .mlg under 420mb
-            </Typography>
-
-            <Stack flexDirection='row' gap={3} mt={1}>
-              <Box
-                component='img'
-                src={avatarUrl}
-                width='100px'
-                height='100px'
-                borderRadius={2}
-                border='1px solid'
-                borderColor={theme.palette.primary.main}
-                sx= {{ objectFit: "cover",
-                  objectPosition: "10% top"}}
-              />
-              
-              <Box my='auto'>
-                <Button
-                  component='label'
-                  color='primary'
-                  variant='contained'
-                  role={undefined}
-                  tabIndex={-1}
-                  onClick={() => setActionData({
-                    ...actionData,
-                    isAvatarModalOpen: true
-                  })}
-                  sx={{
-                    backgroundColor: "#673AB7",
-                    ":hover": { backgroundColor: "#673AB7"}
-                  }}
-                >
-                  Upload
-                </Button>
-              </Box>
-              
-              <Modal
-                open={actionData.isAvatarModalOpen}
-                onClose={() => { setActionData({ 
-                  ...actionData,
-                  isAvatarModalOpen: false
-                });
-                }}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-              >
-                <Stack
-                  component={Paper}
-                  width='max-content'
-                  padding='35px'
-                  gap={3}
-                >
-                  <Button
-                    id='avatar-input'
-                    component='label'
-                    role={undefined}
-                    variant='contained'
-                    tabIndex={-1}
-                    onMouseEnter={() => {
-                      setActionData({
-                        ...actionData,
-                        isPhotoHovered: true
-                      });
-                    }}
-                    onMouseLeave={() => {
-                      setActionData({
-                        ...actionData,
-                        isPhotoHovered: false
-                      });
-                    }
-                    }
-                    sx={{
-                      width: "max-content",
-                      padding: 0,
-                      borderRadius: 2,
-                      mx: { xs: "auto", sm: "0" },
-                      backgroundColor: "rgba(0,0,0,0)",
-                      ":hover": { backgroundColor: "gray" }
-                    }}
-                  >
-                    <Box
-                      component='img'
-                      borderRadius={2}
-                      tabIndex={-2}
-                      mx='auto'
-                      alt='Avatar'
-                      src={actionData.avatarUrlInput ?? avatarUrl}
-                      height={"200px"}
-                      width={"200px"}
-                      sx={{
-                        objectFit: "cover",
-                        objectPosition: "10% top",
-                        transition: ".2s",
-                        opacity: actionData.isPhotoHovered ? 0.5 : 1,
-                      }}
-                    />
-
-                    <PhotoLibrary
-                      sx={{
-                        position: "absolute",
-                        width: 50,
-                        height: 50,
-                        opacity: actionData.isPhotoHovered ? 1 : 0,
-                        transition: ".2s",
-                        color: "white",
-                      }}
-                    />
-
-                    <VisuallyHiddenInput
-                      type='file'
-                      accept='image/png, image/jpeg'
-                      onChange={(e) => {
-                        const newPicture = e.currentTarget?.files?.[0] as File;
-                        
-                        if (newPicture) {
-                          setActionData({
-                            ...actionData,
-                            avatarUrlInput: URL.createObjectURL(newPicture)
-                          });
-                        }
-                      }}
-                    />
-                  </Button>
-
-                  <Stack flexDirection='row' gap={2} mx='auto'>
-                    <Button variant='outlined' color='error' onClick={() => {
-                      setActionData({
-                        ...actionData,
-                        isAvatarModalOpen: false
-                      });
-                    }}>
-                      Cancel
-                    </Button>
-                    
-                    <Button
-                      variant='contained'
-                      color='success'
-                      disabled={ avatarUrl === actionData.avatarUrlInput }
-                      onClick={() => {
-                        setUser({
-                          ...userData,
-                          avatarUrl: actionData.avatarUrlInput
-                        });
-
-                        setActionData({
-                          ...actionData,
-                          isAvatarModalOpen: false
-                        });
-                      }}
-                    >
-                      Confirm
-                    </Button>
-                  </Stack>
-                </Stack>
-              </Modal>
-            </Stack>
-          </Stack>
+          <ProfilePicUpload {...{
+            avatarUrl,
+            actionData,
+            setActionData,
+            userData,
+            setUser,
+          }} /> */}
 
           <Divider variant='fullWidth' />
 
@@ -332,7 +162,7 @@ export default function ProfileSettings() {
                   backgroundColor: "#673AB7",
                   ":hover": { backgroundColor: "#673AB7"}
                 }}
-                onClick={(e) => {
+                onClick={() => {
                   setUser({
                     ...userData,
                     username: formData.username.value
@@ -426,14 +256,14 @@ export default function ProfileSettings() {
           </Stack>
 
           <FormControlLabel
-            disabled={email ? false : true}
-            control={<Checkbox
-              size='small'
-              onChange={(e) => setUser({
-                ...userData,
-                emailNotifs: e.currentTarget.value
-              })}
-            />
+            control={
+              <Checkbox
+                size='small'
+                onChange={(e) => setUser({
+                  ...userData,
+                  emailNotifs: e.currentTarget.value
+                })}
+              />
             }
             label={
               <Typography
@@ -441,80 +271,14 @@ export default function ProfileSettings() {
                 display='inline'
                 color={email ? "CaptionText" : "InactiveCaptionText"}
               >
-                    Receive email notifications
+                Receive email notifications
               </Typography>
             }
           />
 
           <Divider variant='fullWidth' />
 
-          
-          <Stack gap={1}>
-            <Typography 
-              fontSize='22px'
-              fontWeight={400}
-              fontFamily='Inter Variable'
-            >
-              Connected Accounts
-            </Typography>
-
-            <Typography
-              fontSize='16px'
-              fontWeight={300}
-              fontFamily='Inter Variable'
-              color='text.primary'
-              mb={2}
-            >
-              Manage your sign in methods
-            </Typography>
-
-            <Stack id='connected-providers' gap={2}>
-              {Object.keys(oauth_providers).map((key, index) =>
-                <Stack
-                  key={key}
-                  flexDirection='row'
-                  justifyContent='space-between'
-                >
-                  <Stack flexDirection='row' gap={1.5} width='20%'>
-                    <img
-                      src={oauth_providers[key as keyof typeof oauth_providers]
-                        .iconUrl as string}
-                      alt={key}
-                      width='35px'
-                    />
-
-                    <Typography
-                      my='auto'
-                      fontSize='14px'
-                      fontWeight={300}
-                    >
-                      {key}
-                    </Typography>
-                  </Stack>
-
-                  <Typography
-                    fontWeight={300}
-                    fontSize={"14px"}
-                    width='10%'
-                    whiteSpace='nowrap'
-                    my='auto'
-                  >
-                    Connected
-                  </Typography>
-
-                  <Link
-                    href={oauth_providers[key as keyof typeof oauth_providers]
-                      .providerLink}
-                    width='20%'
-                    my='auto'
-                    whiteSpace='nowrap'
-                  >
-                    Disconnect
-                  </Link>
-                </Stack>
-              )}
-            </Stack>
-          </Stack>
+          <ConnectedAccounts />
         </Stack>
       </Box>
     </Layout>
