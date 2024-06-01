@@ -1,7 +1,7 @@
 import { createTheme as muiCreateTheme } from "@mui/material";
 
 interface CreateThemeOptions {
-	darkMode: boolean;
+  darkMode: boolean;
 }
 
 export const createTheme = ({ darkMode }: CreateThemeOptions) =>
@@ -13,22 +13,24 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
           background: { default: "#1b1b1d" },
           text: {
             primary: "#fff",
-            secondary: "#e3e3e3",
+            secondary: "#000",
           },
           primary: { main: "#673AB7" },
           secondary: { main: "#FFC107" },
           error: { main: "#cf6679" },
           contrastText: "#000",
+          blacke: "#000"
         }
         : {
           mode: "light",
           background: { default: "#fff" },
-          text: { primary: "#000", secondary: "#333" },
+          text: { primary: "#000" },
           primary: { main: "#673AB7" },
           secondary: { main: "#FFC107" },
           error: { main: "#cf6679" },
           contrastText: "#fff",
           secondaryBackground: "#F0F0F0",
+          blacke: "#0000"
         }),
     },
     components: {
@@ -42,10 +44,19 @@ export const createTheme = ({ darkMode }: CreateThemeOptions) =>
             },
           },
           text: { textTransform: "none" },
+        
+        },
+      },
+      MuiInputLabel: {
+        defaultProps: { variant: "outlined" },
+        styleOverrides: {
+          root: {
+            fontSize: "13px",
+          },
         },
       },
     },
     typography: {
-      fontFamily: "\"Inter\", \"Roboto\", \"serif\"",
+      fontFamily: "Inter Variable",
     },
   });

@@ -15,75 +15,86 @@ function HomepageHeader() {
     <Box
       component='header'
       bgcolor='primary.main'
-      p='4rem'
-      py='5rem'
+      p={{ xs: "2.5em", lg: "4em" }}
+      py={{ md: "6.6em", lg: "4em" }}
     >
       <Stack
         flexDirection='column'
         className='container'
         width='100%'
         textAlign='center'
-        gap={2}
       >
-        <Stack
-          flexDirection='row'
-          justifyContent='center'
-        >
-          <img
-            src='./img/JAPI3_temp_128.png'
-            alt='Logo'
-            className={styles.logo}
-          />
+        <Stack gap={4}>
+          <Stack
+            flexDirection='row'
+            justifyContent='center'
+          >
+            <Box
+              component='img'
+              src='./img/JAPI3_temp_128.png'
+              width={{ xs: "65px", md: "80px", lg: "80px" }}
+              alt='Logo'
+            />
+
+            <Typography
+              color='#ffff'
+              variant='h1'
+              my='auto'
+              ml={"10px"}
+              fontFamily='Outfit Variable'
+              fontSize={{
+                xs: "40px",
+                sm: "3rem",
+                md: "60px",
+                lg: "60px",
+              }}
+              fontWeight='bold'
+            >
+              {siteConfig.title}
+            </Typography>
+          </Stack>
 
           <Typography
-            color='#ffff'
-            variant='h1'
-            fontSize='50px'
-            fontWeight='800'
-            my='auto'
-            ml={"10px"}
+            component='h2'
+            color='#fff'
+            fontSize={{ xs: "18px", sm: "20px", md: "24px", lg: "24px" }}
+            fontFamily='Inter Variable'
+            fontWeight={600}
           >
-            {siteConfig.title}
+            {/* {siteConfig.tagline} */}
+            Uniformly funny. Perfectly formatted. JokeAPI delivers.
+          </Typography>
+
+          <Typography
+            component='h2'
+            color='#fff'
+            fontSize={{ xs: "18px", sm: "20pz", md: "21px" }}
+            maxWidth={{ md: "60%" }}
+            fontFamily='"Inter Variable", system-ui'
+            fontWeight='300'
+            mx='auto'
+          >
+            {/* {siteConfig.tagline} */}
+            Integrate laughter into your app with our powerful joke API.
           </Typography>
         </Stack>
 
-        <Typography
-          mb={4}
-          component='h2'
-          color='#fff'
-          fontSize='19px'
-          fontWeight={300}
-          fontFamily='Inter'
+        <Box
+          className='cta-button'
+          mt='15px'
         >
-          {/* {siteConfig.tagline} */}
-					Get your funny up, bozo.
-        </Typography>
-
-        <Typography
-          component='h2'
-          color='#fff'
-          fontSize='16px'
-          fontWeight={300}
-          fontFamily='Inter'
-        >
-          {/* {siteConfig.tagline} */}
-					Serving 69 jokes to 420 users.
-        </Typography>
-
-        <Box>
           <Button
             size='large'
             variant='contained'
             onClick={() => navigate("/docs/intro")}
-            // endIcon={<ArrowForward />}
-            sx={{ backgroundColor: "#fff", color: "black" }}
+            sx={{
+              backgroundColor: "#fff",
+              color: "black",
+              fontFamily: "Inter Variable",
+              fontWeight: 500,
+            }}
           >
-            <Typography
-              fontFamily='Inter'
-              fontWeight={800}
-            >
-							Get started
-            </Typography>
+            Get Started
           </Button>
         </Box>
       </Stack>

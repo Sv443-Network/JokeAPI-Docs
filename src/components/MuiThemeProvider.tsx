@@ -2,19 +2,23 @@ import { ThemeProvider } from "@mui/material/styles";
 import { useColorMode } from "@docusaurus/theme-common";
 import { ComponentProps } from "react";
 import { createTheme } from "../theme";
-import { CssBaseline } from "@mui/material";
+import { Box, CssBaseline } from "@mui/material";
 
-import "@fontsource/inter/300.css";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/inter/700.css";
-import "@fontsource/inter/800.css";
+import "@fontsource-variable/inter";
 
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
+import "@fontsource/roboto";
+
+// Supports weights 100-900
+import "@fontsource-variable/roboto-condensed";
+
+// Supports weights 100-900
+import "@fontsource-variable/outfit";
+
+import "@fontsource/poppins";
+
+import "@fontsource/staatliches";
+
+import "@fontsource-variable/open-sans";
 
 export default function MuiThemeProvider(
   props: Omit<ComponentProps<typeof ThemeProvider>, "theme">,
@@ -25,7 +29,9 @@ export default function MuiThemeProvider(
   return (
     <ThemeProvider {...{ theme }}>
       <CssBaseline />
+
       {props.children}
+      
     </ThemeProvider>
   );
 }
